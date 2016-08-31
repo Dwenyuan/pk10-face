@@ -1,7 +1,7 @@
 var path = require('path')
 const webpack = require('webpack') //加载webpack模块
 module.exports = {
-    // devtool: '#eval-source-map',
+    devtool: '#eval-source-map',
     // devtool: '#inline-source-map',
     entry: {
         app: './src/main.js',
@@ -26,39 +26,35 @@ module.exports = {
         fallback: [path.join(__dirname, '../node_modules')]
     },
     module: {
-        preLoaders: [
-            {
-                test: /\.vue$/,
-                loader: 'eslint',
-                exclude: /node_modules/
-            }, {
-                test: /\.js$/,
-                loader: 'eslint',
-                exclude: /node_modules/
+        preLoaders: [{
+            test: /\.vue$/,
+            loader: 'eslint',
+            exclude: /node_modules/
+        }, {
+            test: /\.js$/,
+            loader: 'eslint',
+            exclude: /node_modules/
+        }],
+        loaders: [{
+            test: /\.vue$/,
+            loader: 'vue'
+        }, {
+            test: /\.js$/,
+            loader: 'babel',
+            exclude: /node_modules/,
+            query: {
+                presets: ['es2015']
             }
-        ],
-        loaders: [
-            {
-                test: /\.vue$/,
-                loader: 'vue'
-            }, {
-                test: /\.js$/,
-                loader: 'babel',
-                exclude: /node_modules/,
-                query: {
-                    presets: ['es2015']
-                }
-            }, {
-                test: /\.json$/,
-                loader: 'json'
-            }, {
-                test: /\.html$/,
-                loader: 'vue-html'
-            }, {
-                test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
-                loader: 'url?limit=3000'
-            }
-        ]
+        }, {
+            test: /\.json$/,
+            loader: 'json'
+        }, {
+            test: /\.html$/,
+            loader: 'vue-html'
+        }, {
+            test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+            loader: 'url?limit=3000'
+        }]
     },
     eslint: {
         formatter: require('eslint-friendly-formatter')
