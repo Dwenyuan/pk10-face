@@ -1,0 +1,45 @@
+
+> pk10@1.0.0 build /Users/liushao/Documents/workface/1
+> webpack
+
+Hash: 44a24ac8d451968009f1
+Version: webpack 1.13.2
+Time: 15684ms
+                               Asset     Size  Chunks             Chunk Names
+3bc39161c598b2675397925b6a9b70b0.png  9.33 kB          [emitted]  
+4b4a6609b989655a4d67f245bd57e41d.png   362 kB          [emitted]  
+ac57b56cc12c23becbf3453bc6eb3597.png  7.24 kB          [emitted]  
+11e064040a9fe6fbb960be73171de4bc.png   6.1 kB          [emitted]  
+968506e96b2b4f22524d646d25ab2971.png    14 kB          [emitted]  
+7a713395081f350d8d64df3e7313e6ad.png  24.8 kB          [emitted]  
+a44fc3ac0870f64a8b22fe4ffdfee29e.png  4.48 kB          [emitted]  
+017b5a78d2c25b5558073977d651c1e5.jpg    11 kB          [emitted]  
+6ea94efde432d2c7395db331e5cf3528.png   8.6 kB          [emitted]  
+918f2ce5dd9159cf2aaac7fd5ff728c2.png  5.76 kB          [emitted]  
+7350ceb26d0290421f84d5f5519ddbc5.png  9.29 kB          [emitted]  
+0bb848f0cfc399d393fe87e272705b96.jpg  11.7 kB          [emitted]  
+4a70ce2465a2c0262a7a333858f80302.png  7.24 kB          [emitted]  
+016a9a8043902d58b25c9ba2a79c39e5.png  7.04 kB          [emitted]  
+5b5e1c4eee241a6f6ad82c6d725e30e6.png  7.53 kB          [emitted]  
+0c44d97a469a5e1ae984c73a8d802273.png   6.6 kB          [emitted]  
+816eb2731b1aa3122391c039d813414b.png  9.35 kB          [emitted]  
+f5e17c520c58983e622090fce8d2f8ea.png  4.82 kB          [emitted]  
+7f774f495bc20d802cffec012dd2e456.png  11.4 kB          [emitted]  
+949c5c0e6c23c7a632e5b93075a0b79a.png  4.86 kB          [emitted]  
+329e0c44211f4e285d37694031bcf1f9.png  11.1 kB          [emitted]  
+5fed23c3174f28b51d24385c3403539f.png  3.83 kB          [emitted]  
+15951bbef3e80af5022f3a60c9aad438.png  5.59 kB          [emitted]  
+9ea6b46c87a22c38e4efc398f6d7aab9.png   7.2 kB          [emitted]  
+cc572d6c31afe0f7a8b79ccf626e3978.png  10.4 kB          [emitted]  
+f81fc3d718f9c40bb0c9df1dcfacb247.png  13.7 kB          [emitted]  
+c4f6add219b048e214e56cd4fae1f16e.png  17.3 kB          [emitted]  
+231a03c785f25d2e03e5a29c7dea5708.png  3.29 kB          [emitted]  
+a142cae9ec28da21f761f390bdfb5757.png  11.2 kB          [emitted]  
+d2f7ece96f44a64f02a3618ec594d0e6.png  3.63 kB          [emitted]  
+60d41e004e6533b05269887467d8214c.png  3.43 kB          [emitted]  
+2d6f93c1ff61f70a08a56a753fb5fc77.png  5.12 kB          [emitted]  
+96ba20abec66de90d7077f6c409b6b73.png  3.07 kB          [emitted]  
+                              app.js   295 kB       0  [emitted]  app
+                            login.js   240 kB       1  [emitted]  login
+                          manager.js   269 kB       2  [emitted]  manager
+    + 214 hidden modules

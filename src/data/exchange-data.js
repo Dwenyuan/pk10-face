@@ -1,0 +1,33 @@
+define(function() {
+    return [{
+        goodname: '500金币',
+        price: 500,
+        sub: '',
+        goodsimg: require('../assets/切图/充值/500.png'),
+        goodsnum: 200
+    }, {
+        goodname: '1000金币',
+        price: 1000,
+        sub: '',
+        goodsimg: require('../assets/切图/充值/1000.png'),
+        goodsnum: 200
+    }, {
+        goodname: '2000金币',
+        price: 2000,
+        sub: '+188金币',
+        goodsimg: require('../assets/切图/充值/2000.png'),
+        goodsnum: 200
+    }, {
+        goodname: '5000金币',
+        price: 5000,
+        sub: '+888金币',
+        goodsimg: require('../assets/切图/充值/5000.png'),
+        goodsnum: 200
+    }, {
+        goodname: '10000金币',
+        price: 10000,
+        sub: '+2888金币',
+        goodsimg: require('../assets/切图/充值/10000.png'),
+        goodsnum: 200
+    }]
+})

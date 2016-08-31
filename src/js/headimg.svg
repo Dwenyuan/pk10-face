@@ -1,0 +1,16 @@
+<svg id="mysvg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="142px" height="165px">
+    <defs>
+        <pattern id="image" x="0" y="0" patternUnits="userSpaceOnUse" width="142" height="165">
+            <image x="0" y="0" width="142" height="165" xlink:href="./th.jpg"></image>
+        </pattern>
+    </defs>
+    <image x="0" y="0" width="142" height="165" xlink:href="./切图/主界面/头像1.png"></image>
+    <polygon points="70,15 128,48 128,113 71,146 13,113 13,48" fill="url(#image)" />
+</svg>
+
+<!-- svg(xmlns="http://www.w3.org/2000/svg",version="1.1",width="142px",height="165px")
+                    defs
+                        pattern(id="image",x="0",y="0",patternUnits="userSpaceOnUse",width="142",v-bind:height="headsize.height")
+                            image(x="0",y="0",width="142",height="165",v-bind:xlink:href="'./src/assets/th.jpg'")
+                    image(x="0",y="0",width="142",height="165",xlink:href="./src/assets/切图/主界面/头像1.png")
+                    polygon(v-bind:points="70,15 128,48 128,113 71,146 13,113 13,48",fill="url(#image)") -->

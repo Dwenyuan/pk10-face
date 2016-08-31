@@ -1,0 +1,141 @@
+module.exports = [{
+    goodname: '测试商品',
+    price: '100',
+    goodsimg: require('../assets/切图/商城/金币.png'),
+    goodsnum: 200
+}, {
+    goodname: 'liu',
+    price: '100',
+    goodsimg: require('../assets/切图/商城/金币.png'),
+    goodsnum: 200
+}, {
+    goodname: '测试商品',
+    price: '100',
+    goodsimg: require('../assets/切图/商城/金币.png'),
+    goodsnum: 200
+}, {
+    goodname: '测试商品',
+    price: '100',
+    goodsimg: require('../assets/切图/商城/金币.png'),
+    goodsnum: 200
+}, {
+    goodname: '测试商品',
+    price: '100',
+    goodsimg: require('../assets/切图/商城/金币.png'),
+    goodsnum: 200
+}, {
+    goodname: '测试商品',
+    price: '100',
+    goodsimg: require('../assets/切图/商城/金币.png'),
+    goodsnum: 200
+}, {
+    goodname: '测试商品',
+    price: '100',
+    goodsimg: require('../assets/切图/商城/金币.png'),
+    goodsnum: 200
+}, {
+    goodname: '测试商品',
+    price: '100',
+    goodsimg: require('../assets/切图/商城/金币.png'),
+    goodsnum: 200
+}, {
+    goodname: '测试商品',
+    price: '100',
+    goodsimg: require('../assets/切图/商城/金币.png'),
+    goodsnum: 200
+}, {
+    goodname: '测试商品',
+    price: '100',
+    goodsimg: require('../assets/切图/商城/金币.png'),
+    goodsnum: 200
+}, {
+    goodname: '测试商品',
+    price: '100',
+    goodsimg: require('../assets/切图/商城/金币.png'),
+    goodsnum: 200
+}, {
+    goodname: '测试商品',
+    price: '100',
+    goodsimg: require('../assets/切图/商城/金币.png'),
+    goodsnum: 200
+}, {
+    goodname: '测试商品',
+    price: '100',
+    goodsimg: require('../assets/切图/商城/金币.png'),
+    goodsnum: 200
+}, {
+    goodname: '测试商品',
+    price: '100',
+    goodsimg: require('../assets/切图/商城/金币.png'),
+    goodsnum: 200
+}, {
+    goodname: '测试商品',
+    price: '100',
+    goodsimg: require('../assets/切图/商城/金币.png'),
+    goodsnum: 200
+}, {
+    goodname: '测试商品',
+    price: '100',
+    goodsimg: require('../assets/切图/商城/金币.png'),
+    goodsnum: 200
+}, {
+    goodname: '测试商品',
+    price: '100',
+    goodsimg: require('../assets/切图/商城/金币.png'),
+    goodsnum: 200
+}, {
+    goodname: '测试商品',
+    price: '100',
+    goodsimg: require('../assets/切图/商城/金币.png'),
+    goodsnum: 200
+}, {
+    goodname: '测试商品',
+    price: '100',
+    goodsimg: require('../assets/切图/商城/金币.png'),
+    goodsnum: 200
+}, {
+    goodname: '测试商品',
+    price: '100',
+    goodsimg: require('../assets/切图/商城/金币.png'),
+    goodsnum: 200
+}, {
+    goodname: '测试商品',
+    price: '100',
+    goodsimg: require('../assets/切图/商城/金币.png'),
+    goodsnum: 200
+}, {
+    goodname: '测试商品',
+    price: '100',
+    goodsimg: require('../assets/切图/商城/金币.png'),
+    goodsnum: 200
+}, {
+    goodname: '测试商品',
+    price: '100',
+    goodsimg: require('../assets/切图/商城/金币.png'),
+    goodsnum: 200
+}, {
+    goodname: '测试商品',
+    price: '100',
+    goodsimg: require('../assets/切图/商城/金币.png'),
+    goodsnum: 200
+}, {
+    goodname: '测试商品',
+    price: '100',
+    goodsimg: require('../assets/切图/商城/金币.png'),
+    goodsnum: 200
+}, {
+    goodname: '测试商品',
+    price: '100',
+    goodsimg: require('../assets/切图/商城/金币.png'),
+    goodsnum: 200
+}, {
+    goodname: 'shao',
+    price: '100',
+    goodsimg: require('../assets/切图/商城/金币.png'),
+    goodsnum: 200
+}, {
+    goodname: '测试商品',
+    price: '100',
+    goodsimg: require('../assets/切图/商城/金币.png'),
+    goodsnum: 200
+}]
