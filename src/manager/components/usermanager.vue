@@ -29,7 +29,7 @@
                                     td(v-html="user.tel")
                                     td(v-html="user.createdAt | date")
                                     td
-                                        a.btn.btn-default(@click="showSetMoney(user)",data-toggle="modal",data-target="#myModal") 设置金钱
+                                        a.btn.btn-default(@click="showSetMoney(user)",data-toggle="modal",data-target="#myModal") 修改用户信息
                                     td
                                         a.btn.btn-default 删除 
             div.panel-footer
