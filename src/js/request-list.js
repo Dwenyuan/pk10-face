@@ -10,7 +10,7 @@ module.exports.getCount = () => Vue.http.get('getCount');
 // 获取开奖结果
 module.exports.getBonusNum = (params) => Vue.http.get('getBonusNum', params);
 // 获取开奖记录
-module.exports.getAllBonusNums = (params) => Vue.http.get('getAllBonusNums', params);
+module.exports.getAllBonusNums = (params) => Vue.http.get('getBonusRecord', params);
 // 买定离手
 module.exports.createUserBets = (params) => Vue.http.post('createUserBets', params);
 // 获取最近下注
@@ -36,6 +36,14 @@ module.exports.getCode = function() { // 获取用户code值
 module.exports.updateuserinfo = (params) => Vue.http.post('updateuserinfo', params);
 
 // 获取所有系统设置信息
-module.exports.getAllSystemSetting = () => Vue.http.get('getAllSystemSetting');
+module.exports.getAllSystemSetting = () => Vue.http.get('getAllGameInitDate');
 // 更新系统设置信息
 module.exports.updateSystemSetting = (params) => Vue.http.post('updateSystemSetting', params);
+//获取所有代理商
+module.exports.getAllAgent = (params) => Vue.http.post('getAllAgent', params);
+
+module.exports.getUserForAgent = (params) => Vue.http.post('getUserForAgent', params);
+// 根据游戏名获取游戏配置
+module.exports.getGameInitDate = (params) => Vue.http.post('getGameInitDate', params);
+// 更新游戏设置
+module.exports.updateGameInitDate = (params) => Vue.http.post('updateGameInitDate', params);

@@ -1,11 +1,8 @@
 module.exports = [{
-    gamename: 'PK10',
-    initmoney: 10000,
-    numberodd: 9, //下注数字的赔率
-    singleodd: 1.5 //下注单双时的赔率
-}, {
-    gamename: '梅花',
-    initmoney: 10000,
-    numberodd: 9, //下注数字的赔率
-    singleodd: 1.5 //下注单双时的赔率
+    "id": 1,
+    "gName": "猜字游戏",
+    "type": "大小单双",
+    "rate": 10,
+    "moneyLimit": 10000,
+    "initMoney": 1000
 }]

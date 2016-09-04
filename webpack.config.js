@@ -1,7 +1,7 @@
 var path = require('path')
 const webpack = require('webpack') //加载webpack模块
 module.exports = {
-    devtool: '#eval-source-map',
+    // devtool: '#eval-source-map',
     // devtool: '#inline-source-map',
     entry: {
         app: './src/main.js',

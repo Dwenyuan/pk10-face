@@ -29,9 +29,9 @@
                                     td(v-html="user.tel")
                                     td(v-html="user.createdAt | date")
                                     td
-                                        a.btn.btn-default(@click="showSetMoney(user)",data-toggle="modal",data-target="#myModal") 修改用户信息
+                                        a.btn.btn-default.btn-xs(v-if="isadmin",@click="showSetMoney(user)",data-toggle="modal",data-target="#myModal") 修改用户信息
                                     td
-                                        a.btn.btn-default 删除 
+                                        a.btn.btn-default.btn-xs(v-if="isadmin",@click="checkuserinfo") 查看用户记录
             div.panel-footer
                 div.btn-toolbar(role="toolbar" aria-label="...")
                     div.btn-group
@@ -42,45 +42,66 @@
                 div.modal-header
                     button.close(data-dismiss="modal",aria-label="Close")
                         span(aria-hidden="true") &times;
-                    h4.modal-title(v-html="setUser.nickname")
+                    h4.modal-title(v-html="setUser.username")
                 div.modal-body
-                    hr
+                    br
                     div.input-group
                         span.input-group-btn
                             span.btn.btn-default.list-name 用户id
                         input.form-control(v-model="setUser.id",disabled)
-                    hr
+                    br
                     div.input-group
                         span.input-group-btn
                             span.btn.btn-default.list-name 用户名
                         input.form-control(v-model="setUser.username")
-                    hr
+                    br
                     div.input-group
                         span.input-group-btn
                             span.btn.btn-default.list-name 电话
                         input.form-control(v-model="setUser.tel")
-                    hr
+                    br
                     div.input-group
                         span.input-group-btn
                             span.btn.btn-default.list-name 注册时间
                         input.form-control(v-bind:value="setUser.createdAt|datetime",disabled)
-                    hr
+                    br
                     div.input-group
                         span.input-group-btn
                             span.btn.btn-default.list-name 金币
                         input.form-control(v-model="setUser.money")
-                    hr
-
                 div.modal-footer
                     button.btn.btn-default(data-dismiss="modal") 关闭
                     button.btn.btn-primary(@click="updateUser") 确认修改
+    div.modal.fade(v-el:betrecord)
+        div.modal-dialog
+            div.panel.panel-default
+                div.panel-heading
+                    h5 投注记录
+                div.panel-body
+                    table.table.table-hover.table-bordered
+                        thead
+                            th 玩法
+                            th 下注金额
+                            th 下注数字
+                            th 下注时间
+                        tbody
+                            tr(v-for="item in betRecords")
+                                td(v-html="item.playlaw")
+                                td(v-html="item.betmoney")
+                                td(v-html="item.betnum|covert")
+                                td(v-html="item.createdAt|datetime")
+                div.panel-footer
 </template>
 <script>
     import RequestList from '../../js/request-list'
     export default {
-        props: [],
+        props: ['currentuserinfo'],
         ready() {
-            RequestList.getAllUserInfo().then(res => this.userList = res.data)
+            if (this.currentuserinfo.isagent === 3) {
+                RequestList.getAllUserInfo().then(res => this.userList = res.data)
+            } else {
+                RequestList.getUserForAgent(JSON.parse(JSON.stringify(this.currentuserinfo))).then(res => this.userList = res.data)
+            }
         },
         data() {
             return {
@@ -88,7 +109,8 @@
                 setUser: {},
                 userList: require('../../data/userinfo'),
                 pageindex: 0,
-                pagenum: 20
+                pagenum: 20,
+                betRecords: []
             }
         },
         methods: {
@@ -114,6 +136,10 @@
             showSetMoney(user) {
                 this.setUser = user
                 $(this.$els.model).modal('show')
+            },
+            checkuserinfo() {
+                RequestList.getRecentlyBets().then(res => this.betRecords = res.data)
+                $(this.$els.betrecord).modal('show')
             }
         }
     }

@@ -1,7 +1,7 @@
 <template lang="pug">
     div.col-xs-10
         div.panel.panel-info
-            div.panel-heading 用户管理
+            div.panel-heading 代理商管理
             div.panel-body
                 div.row
                     div.col-xs-12
@@ -16,22 +16,25 @@
                                 tr
                                     td 序号
                                     td 用户昵称
-                                    td 用户金币
                                     td 用户电话
                                     td 注册时间
+                                    td 等级
+                                    td 返点
+                                    td
                                     td
                                     td
                             tbody
                                 tr(v-for="user in userList | filterBy searchNickname in 'username'| limitBy pagenum pageindex*pagenum ",track-by="id")
                                     td(v-html="user.id")
                                     td(v-html="user.username")
-                                    td(v-html="user.money")
                                     td(v-html="user.tel")
                                     td(v-html="user.createdAt | date")
+                                    td(v-html="user.isagent")
+                                    td(v-html="user.rebate")
                                     td
-                                        a.btn.btn-default(@click="showSetMoney(user)",data-toggle="modal",data-target="#myModal") 设置金钱
+                                        a.btn.btn-default.btn-xs(@click="showSetMoney(user)",data-toggle="modal",data-target="#myModal") 修改代理商
                                     td
-                                        a.btn.btn-default 删除 
+                                        a.btn.btn-default.btn-xs 删除 
             div.panel-footer
                 div.btn-toolbar(role="toolbar" aria-label="...")
                     div.btn-group
@@ -44,32 +47,37 @@
                         span(aria-hidden="true") &times;
                     h4.modal-title(v-html="setUser.nickname")
                 div.modal-body
-                    hr
+                    br
                     div.input-group
                         span.input-group-btn
                             span.btn.btn-default.list-name 用户id
                         input.form-control(v-model="setUser.id",disabled)
-                    hr
+                    br
                     div.input-group
                         span.input-group-btn
                             span.btn.btn-default.list-name 用户名
                         input.form-control(v-model="setUser.username")
-                    hr
+                    br
                     div.input-group
                         span.input-group-btn
                             span.btn.btn-default.list-name 电话
                         input.form-control(v-model="setUser.tel")
-                    hr
+                    br
                     div.input-group
                         span.input-group-btn
                             span.btn.btn-default.list-name 注册时间
                         input.form-control(v-bind:value="setUser.createdAt|datetime",disabled)
-                    hr
+                    br
                     div.input-group
                         span.input-group-btn
-                            span.btn.btn-default.list-name 金币
-                        input.form-control(v-model="setUser.money")
-                    hr
+                            span.btn.btn-default.list-name 等级
+                        input.form-control(v-model="setUser.isagent")
+                    br
+                    div.input-group
+                        span.input-group-btn
+                            span.btn.btn-default.list-name 返点
+                        input.form-control(v-model="setUser.rebate")
+                    br
 
                 div.modal-footer
                     button.btn.btn-default(data-dismiss="modal") 关闭
@@ -80,7 +88,7 @@
     export default {
         props: [],
         ready() {
-            RequestList.getAllUserInfo().then(res => this.userList = res.data)
+            RequestList.getAllAgent().then(res => this.userList = res.data)
         },
         data() {
             return {
@@ -104,7 +112,10 @@
                     'createdAt': this.setUser.createdAt,
                     'money': this.setUser.money,
                     'nickname': this.setUser.nickname,
-                    'openid': this.setUser.openid
+                    'openid': this.setUser.openid,
+                    'isagent': this.setUser.isagent,
+                    'rebate': this.setUser.rebate,
+                    'owner':this.setUser.owner
                 }).then((res) => {
                     $(this.$els.model).modal('hide')
                 }, (res) => {
