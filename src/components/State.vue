@@ -2,27 +2,41 @@
     //- 状态区 ，展示用户的一些状态
     div.state
         div.state-item.money.table
-            div.money-state.table-cell
-                div.button
-                    table
-                        tr
-                            td
-                                span.money-num(contenteditable="true",@keyup="checkData",@blur="changeData",v-bind:style="{fontSize:34*zoomRate.x+'px'}",v-html="userBet.betmoney")
-        div.state-item.portrait
-            div.polygon(@touchend="showMessage",v-bind:style="headstyle")
-                svg(xmlns="http://www.w3.org/2000/svg",version="1.1",v-bind:width="headsize.width+'px'",v-bind:height="headsize.height+'px'")
-                    defs
-                        pattern(id="image",x="0",y="0",patternUnits="userSpaceOnUse",v-bind:width="headsize.width",v-bind:height="headsize.height")
-                            image(v-el:image,x="0",y="0",v-bind:width="headsize.width",v-bind:height="headsize.height")
-                    polygon(v-bind:points="headborder",fill="url(#image)")
-                    image(x="0",y="0",v-bind:width="headsize.width",v-bind:height="headsize.height",v-bind:xlink:href="headborderimg")
-        div.state-item.stars.table
-            div.money-state.table-cell
-                div.button.undo(@click="cancelbet")
+            div.my-money 我的金豆
+                span 
+                    img.moneyplus(v-bind:src="moneyplus")
+            div.my-money.my-money-show(v-html="userinfo.money-lockmoney")
+        div.dobet-money-btn
+            div.dobet-money-item-btn(@touchend="changecounter(100)")
+                div.show-money-num 100
+            div.dobet-money-item-btn(@touchend="changecounter(1000)")
+                div.show-money-num 1000
+            div.dobet-money-item-btn(@touchend="changecounter(10000)")
+                div.show-money-num 10000
+            div.dobet-money-item-btn(@touchend="changecounter(100000)")
+                div.show-money-num 100000
+            div.dobet-money-item-btn(@touchend="cancelbet")
+        //-     div.money-state.table-cell
+        //-         div.button
+        //-             table
+        //-                 tr
+        //-                     td
+        //-                         span.money-num(contenteditable="true",@keyup="checkData",@blur="changeData",v-bind:style="{fontSize:34*zoomRate.x+'px'}",v-html="userBet.betmoney")
+        //- div.state-item.portrait
+        //-     div.polygon(@touchend="showMessage",v-bind:style="headstyle")
+        //-         svg(xmlns="http://www.w3.org/2000/svg",version="1.1",v-bind:width="headsize.width+'px'",v-bind:height="headsize.height+'px'")
+        //-             defs
+        //-                 pattern(id="image",x="0",y="0",patternUnits="userSpaceOnUse",v-bind:width="headsize.width",v-bind:height="headsize.height")
+        //-                     image(v-el:image,x="0",y="0",v-bind:width="headsize.width",v-bind:height="headsize.height")
+        //-             polygon(v-bind:points="headborder",fill="url(#image)")
+        //-             image(x="0",y="0",v-bind:width="headsize.width",v-bind:height="headsize.height",v-bind:xlink:href="headborderimg")
+        //- div.state-item.stars.table
+        //-     div.money-state.table-cell
+        //-         div.button.undo(@click="cancelbet")
 </template>
 <script>
 export default {
-    props: ['zoomRate', 'userBet', 'userinfo', 'countDown'],
+    props: ['zoomRate', 'userBet', 'userinfo', 'countDown', 'lockmoney','chipImg'],
     ready() {
         console.log(this.zoomRate)
         console.log(this.$els.image)
@@ -31,17 +45,18 @@ export default {
         return {
             headzoom: 1.2,
             headborderimg: require('../assets/切图/主界面/头像1.png'),
-            anonymousheadimg: require('../assets/unkown.jpg')
+            anonymousheadimg: require('../assets/unkown.jpg'),
+            moneyplus:require('./../assets/修改切图/我的金豆加号.png')
         }
     },
-    watch: {
-        'userinfo.headimgurl': function(newval) { //没有头像时 使用匿名头像
-            if (!newval) {
-                newval = this.anonymousheadimg
-            }
-            this.$els.image.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', newval)
-        }
-    },
+    // watch: {
+    //     'userinfo.headimgurl': function(newval) { //没有头像时 使用匿名头像
+    //         if (!newval) {
+    //             newval = this.anonymousheadimg
+    //         }
+    //         this.$els.image.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', newval)
+    //     }
+    // },
     computed: {
         headsize() {
             return {
@@ -63,6 +78,26 @@ export default {
         }
     },
     methods: {
+        changecounter(event){
+            this.userBet.betmoney = event
+            switch(event){
+                case 100:
+                    this.chipImg = require('../assets/切图/主界面/1X筹码-拷贝.png')
+                    break;
+                case 1000:
+                    this.chipImg = require('../assets/切图/主界面/5X筹码-拷贝.png')
+                    break;
+                case 10000:
+                    this.chipImg = require('../assets/切图/主界面/10X筹码-拷贝.png')
+                    break;
+                case 100000:
+                    this.chipImg = require('../assets/切图/主界面/10X筹码-拷贝.png')
+                    break;
+                default:
+                    this.chipImg = require('../assets/切图/主界面/1X筹码-拷贝.png')
+                    break;
+            }
+        },
         showMessage() {
             this.$dispatch('showMessage', 5) // 5代表背景数组的最后一个，即显示充值的背景
         },
@@ -90,85 +125,150 @@ export default {
 }
 </script>
 <style>
-.state {
-    height: 17%;
-    width: 100%;
-    bottom: 1em;
-    position: absolute;
-}
-
-table {
-    width: 100%;
-    height: 100%;
-}
-
-div.state-item {
-    float: left;
-    width: 33.3333%;
-    height: 100%;
-}
-
-div.money-state {
-    padding: 0 1em;
-}
-
-div.portrait {
-    padding: 0;
-}
-
-div.portrait-img {
-    width: 100%;
-    height: 100%;
-    background: url(../assets/th.jpg) 50% 50% no-repeat;
-    background-size: contain;
-}
-
-div.polygon {
-    /*clip-path: polygon(50% 0, 100% 27%, 100% 73%, 50% 100%, 0% 73%, 0 27%);*/
-    width: 100%;
-    height: 100%;
-    /*    background: url(../assets/切图/主界面/头像1.png) 50% 50% no-repeat;
+    .state {
+        height: 17%;
+        width: 100%;
+        bottom: 0em;
+        position: absolute;
+    }
+    
+    div.state-item.money {
+        background: url('../assets/修改切图/我的金豆.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        float: left;
+    }
+    
+    table {
+        width: 100%;
+        height: 100%;
+    }
+    
+    div.state-item {
+        float: left;
+        width: 35%;
+        height: 100%;
+    }
+    
+    img.moneyplus {
+        width: 1em;
+    }
+    
+    div.money-state {
+        padding: 0 1em;
+    }
+    
+    div.my-money {
+        margin: 9% 0 0 7%;
+        font-size: 16px;
+    }
+    
+    div.my-money-show {
+        margin: 16% 0 0 7%;
+    }
+    
+    div.show-money-num {
+        text-align: center;
+        color: white;
+        margin-top: 160%;
+        background: rgba(0, 0, 0, 0.3);
+        font-size: 12px;
+        border-radius: 10px;
+    }
+    
+    div.dobet-money-btn {
+        width: 65%;
+        float: left;
+        height: 100%;
+    }
+    
+    div.portrait {
+        padding: 0;
+    }
+    
+    div.portrait-img {
+        width: 100%;
+        height: 100%;
+        background: url(../assets/th.jpg) 50% 50% no-repeat;
+        background-size: contain;
+    }
+    
+    div.polygon {
+        /*clip-path: polygon(50% 0, 100% 27%, 100% 73%, 50% 100%, 0% 73%, 0 27%);*/
+        width: 100%;
+        height: 100%;
+        /*    background: url(../assets/切图/主界面/头像1.png) 50% 50% no-repeat;
     background-size: contain;*/
-    margin: auto;
-}
-
-div.button.undo {
-    background: url(./../assets/切图/主界面/撤销.png) 50% 50%;
-    background-repeat: no-repeat;
-    background-size: contain;
-}
-
-div.button {
-    background: url(./../assets/切图/主界面/投注金额.png) 50% 50%;
-    background-size: contain;
-    background-repeat: no-repeat;
-    height: 40%;
-    padding: 5%;
-}
-
-div.button span {
-    /*font-size: 1.5rem;*/
-}
-
-
-/*div.stars-button{
+        margin: auto;
+    }
+    
+    div.button.undo {
+        background: url(./../assets/切图/主界面/撤销.png) 50% 50%;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+    
+    div.button {
+        background: url(./../assets/切图/主界面/投注金额.png) 50% 50%;
+        background-size: contain;
+        background-repeat: no-repeat;
+        height: 40%;
+        padding: 5%;
+    }
+    
+    div.dobet-money-item-btn {
+        float: left;
+        width: 19%;
+        margin-left: 1%;
+        height: 100%;
+    }
+    
+    div.dobet-money-item-btn:nth-child(1) {
+        background: url('./../assets/切图/主界面/1X筹码-拷贝.png') no-repeat 50% 50%;
+        background-size: contain;
+    }
+    
+    div.dobet-money-item-btn:nth-child(2) {
+        background: url('./../assets/切图/主界面/5X筹码-拷贝.png') no-repeat 50% 50%;
+        background-size: contain;
+    }
+    
+    div.dobet-money-item-btn:nth-child(3) {
+        background: url('./../assets/切图/主界面/10X筹码-拷贝.png') no-repeat 50% 50%;
+        background-size: contain;
+    }
+    
+    div.dobet-money-item-btn:nth-child(4) {
+        background: url('./../assets/修改切图/撤销.png') no-repeat 50% 50%;
+        background-size: contain;
+    }
+    
+    div.dobet-money-item-btn:nth-child(5) {
+        background: url('./../assets/修改切图/撤销.png') no-repeat 50% 50%;
+        background-size: contain;
+    }
+    
+    div.button span {
+        /*font-size: 1.5rem;*/
+    }
+    /*div.stars-button{
     padding: .8em;
 }*/
-
-.money-icon {
-    /*background: url(../assets/切图/商城/金币.png) 50% 50%;*/
-    /*background-size: contain;*/
-    /*background-repeat: no-repeat;*/
-}
-
-span.money-icon {
-    float: left;
-    font-size: 1.5em;
-}
-
-.money-num {
-    color: white;
-    -webkit-user-modify: read-write-plaintext-only;
-    font-size: 1.5em;
-}
+    
+    .money-icon {
+        /*background: url(../assets/切图/商城/金币.png) 50% 50%;*/
+        /*background-size: contain;*/
+        /*background-repeat: no-repeat;*/
+    }
+    
+    span.money-icon {
+        float: left;
+        font-size: 1.5em;
+    }
+    
+    .money-num {
+        color: white;
+        -webkit-user-modify: read-write-plaintext-only;
+        font-size: 1.5em;
+    }
 </style>

@@ -2,8 +2,8 @@
         background
         menu-bar(v-bind:game-data="gameData",v-bind:notice="notice",v-bind:zoom-rate="zoomRate")
         bet-and-bonus(v-bind:zoom-rate="zoomRate",v-bind:userinfo="userinfo",v-bind:user-bet="userBet",v-bind:bets.sync="bets",v-bind:lockmoney="lockmoney",v-bind:error.sync="error",v-bind:lotterynum.sync="lotterynum",v-bind:count-down.sync="countDown",v-bind:count-num.sync="countNum")
-        play-panel(v-bind:zoom-rate="zoomRate",v-bind:userinfo="userinfo",v-bind:user-bet="userBet",v-bind:bets.sync="bets",v-bind:lockmoney="lockmoney",v-bind:error.sync="error",v-bind:lotterynum.sync="lotterynum",v-bind:count-down.sync="countDown",v-bind:count-num.sync="countNum")
-        state(v-bind:zoom-rate="zoomRate",v-bind:userinfo="userinfo",v-bind:user-bet="userBet",v-bind:bets.sync="bets",v-bind:count-down.sync="countDown",v-bind:error.sync="error")
+        play-panel(v-bind:zoom-rate="zoomRate",v-bind:userinfo="userinfo",v-bind:user-bet="userBet",v-bind:bets.sync="bets",v-bind:lockmoney="lockmoney",v-bind:error.sync="error",v-bind:chip-img.sync="chipImg",v-bind:lotterynum.sync="lotterynum",v-bind:count-down.sync="countDown",v-bind:count-num.sync="countNum")
+        state(v-bind:zoom-rate="zoomRate",v-bind:userinfo="userinfo",v-bind:user-bet="userBet",v-bind:bets.sync="bets",v-bind:lockmoney="lockmoney",v-bind:chip-img.sync="chipImg",v-bind:count-down.sync="countDown",v-bind:error.sync="error")
         //- bet-multiple
         message(v-bind:zoom-rate="zoomRate",v-bind:userinfo="userinfo",v-bind:bets.sync="bets",v-bind:error.sync="error")
         modal.modal(v-if="error")
@@ -18,7 +18,7 @@ import State from './components/State.vue'
 import BetMultiple from './components/BetMultiple.vue'
 import Message from './components/Message.vue'
 import gameData from './data/data' //  加载模板数据
-import wx from 'weixin-js-sdk'
+// import wx from 'weixin-js-sdk'
 import RequestList from './js/request-list'
 export default {
     props: [],
@@ -42,6 +42,7 @@ export default {
                 betmoney: 1000 //默认下注金额为1000
 
             },
+            chipImg:require('./assets/切图/主界面/5X筹码-拷贝.png'),
             lastbets: [], // 上次投注结果
             isinit: true,
             gameData: gameData,
@@ -50,7 +51,7 @@ export default {
                 createdAt: 0,
                 lotterynums: ''
             },
-            wx: wx,
+            // wx: wx,
             countDown: 300, // 倒计时秒数
             countNum: 300, //开奖时间间隔 默认3分钟
             error: false,
@@ -186,32 +187,32 @@ export default {
 }
 </script>
 <style>
-body {
-    margin: 0;
-}
-
-html,
-body {
-    height: 100%;
-}
-
-.table {
-    display: table;
-}
-
-div.modal {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, .6);
-    top: 0px;
-    left: 0;
-    z-index: 999;
-}
-
-.table-cell {
-    display: table-cell;
-    vertical-align: middle;
-    text-align: center;
-}
+    body {
+        margin: 0;
+    }
+    
+    html,
+    body {
+        height: 100%;
+    }
+    
+    .table {
+        display: table;
+    }
+    
+    div.modal {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, .6);
+        top: 0px;
+        left: 0;
+        z-index: 999;
+    }
+    
+    .table-cell {
+        display: table-cell;
+        vertical-align: middle;
+        text-align: center;
+    }
 </style>

@@ -3,33 +3,33 @@
     div.playpanel
         div.table-panel(v-el:panel,v-bind:style="{width:imgSize.width*zoomRate.x+'px',height:imgSize.height*zoomRate.y+'px'}")
             div.num.single(v-bind:style="single",@touchend="dobet('single')")
-                img.chip(v-for="item in bets|filterBy 'single' in 'betnum'",v-bind:src="chipImg",v-bind:style="{margin: (Math.random() * 50) + '% 0 0 ' + (Math.random() * 50) + '%'}")
+                img.chip(v-for="item in bets|filterBy 'single' in 'betnum'",v-bind:src="item.betimg",v-bind:style="{margin: (Math.random() * 50) + '% 0 0 ' + (Math.random() * 50) + '%'}")
             div.num.double(v-bind:style="double",@touchend="dobet('double')")
-                img.chip(v-for="item in bets|filterBy 'double' in 'betnum'",v-bind:src="chipImg",v-bind:style="{margin: (Math.random() * 50) + '% 0 0 ' + (Math.random() * 50) + '%'}")
+                img.chip(v-for="item in bets|filterBy 'double' in 'betnum'",v-bind:src="item.betimg",v-bind:style="{margin: (Math.random() * 50) + '% 0 0 ' + (Math.random() * 50) + '%'}")
             div.num.zero(v-bind:style="zero",@touchend="dobet(0)")
-                img.chip(v-for="item in bets|filterBy 0 in 'betnum'",v-bind:src="chipImg",v-bind:style="{margin: (Math.random() * 50) + '% 0 0 ' + (Math.random() * 50) + '%'}")
+                img.chip(v-for="item in bets|filterBy 0 in 'betnum'",v-bind:src="item.betimg",v-bind:style="{margin: (Math.random() * 50) + '% 0 0 ' + (Math.random() * 50) + '%'}")
             div.num.one(v-bind:style="one",@touchend="dobet(1)")
-                img.chip(v-for="item in bets|filterBy 1 in 'betnum'",v-bind:src="chipImg",v-bind:style="{margin: (Math.random() * 50) + '% 0 0 ' + (Math.random() * 50) + '%'}")
+                img.chip(v-for="item in bets|filterBy 1 in 'betnum'",v-bind:src="item.betimg",v-bind:style="{margin: (Math.random() * 50) + '% 0 0 ' + (Math.random() * 50) + '%'}")
             div.num.two(v-bind:style="two",@touchend="dobet(2)")
-                img.chip(v-for="item in bets|filterBy 2 in 'betnum'",v-bind:src="chipImg",v-bind:style="{margin: (Math.random() * 50) + '% 0 0 ' + (Math.random() * 50) + '%'}")
+                img.chip(v-for="item in bets|filterBy 2 in 'betnum'",v-bind:src="item.betimg",v-bind:style="{margin: (Math.random() * 50) + '% 0 0 ' + (Math.random() * 50) + '%'}")
             div.num.three(v-bind:style="three",@touchend="dobet(3)")
-                img.chip(v-for="item in bets|filterBy 3 in 'betnum'",v-bind:src="chipImg",v-bind:style="{margin: (Math.random() * 50) + '% 0 0 ' + (Math.random() * 50) + '%'}")
+                img.chip(v-for="item in bets|filterBy 3 in 'betnum'",v-bind:src="item.betimg",v-bind:style="{margin: (Math.random() * 50) + '% 0 0 ' + (Math.random() * 50) + '%'}")
             div.num.four(v-bind:style="four",@touchend="dobet(4)")
-                img.chip(v-for="item in bets|filterBy 4 in 'betnum'",v-bind:src="chipImg",v-bind:style="{margin: (Math.random() * 50) + '% 0 0 ' + (Math.random() * 50) + '%'}")
+                img.chip(v-for="item in bets|filterBy 4 in 'betnum'",v-bind:src="item.betimg",v-bind:style="{margin: (Math.random() * 50) + '% 0 0 ' + (Math.random() * 50) + '%'}")
             div.num.five(v-bind:style="five",@touchend="dobet(5)")
-                img.chip(v-for="item in bets|filterBy 5 in 'betnum'",v-bind:src="chipImg",v-bind:style="{margin: (Math.random() * 50) + '% 0 0 ' + (Math.random() * 50) + '%'}")
+                img.chip(v-for="item in bets|filterBy 5 in 'betnum'",v-bind:src="item.betimg",v-bind:style="{margin: (Math.random() * 50) + '% 0 0 ' + (Math.random() * 50) + '%'}")
             div.num.six(v-bind:style="six",@touchend="dobet(6)")
-                img.chip(v-for="item in bets|filterBy 6 in 'betnum'",v-bind:src="chipImg",v-bind:style="{margin: (Math.random() * 50) + '% 0 0 ' + (Math.random() * 50) + '%'}")
+                img.chip(v-for="item in bets|filterBy 6 in 'betnum'",v-bind:src="item.betimg",v-bind:style="{margin: (Math.random() * 50) + '% 0 0 ' + (Math.random() * 50) + '%'}")
             div.num.seven(v-bind:style="seven",@touchend="dobet(7)")
-                img.chip(v-for="item in bets|filterBy 7 in 'betnum'",v-bind:src="chipImg",v-bind:style="{margin: (Math.random() * 50) + '% 0 0 ' + (Math.random() * 50) + '%'}")
+                img.chip(v-for="item in bets|filterBy 7 in 'betnum'",v-bind:src="item.betimg",v-bind:style="{margin: (Math.random() * 50) + '% 0 0 ' + (Math.random() * 50) + '%'}")
             div.num.eight(v-bind:style="eight",@touchend="dobet(8)")
-                img.chip(v-for="item in bets|filterBy 8 in 'betnum'",v-bind:src="chipImg",v-bind:style="{margin: (Math.random() * 50) + '% 0 0 ' + (Math.random() * 50) + '%'}")
+                img.chip(v-for="item in bets|filterBy 8 in 'betnum'",v-bind:src="item.betimg",v-bind:style="{margin: (Math.random() * 50) + '% 0 0 ' + (Math.random() * 50) + '%'}")
             div.num.nine(v-bind:style="nine",@touchend="dobet(9)")
-                img.chip(v-for="item in bets|filterBy 9 in 'betnum'",v-bind:src="chipImg",v-bind:style="{margin: (Math.random() * 50) + '% 0 0 ' + (Math.random() * 50) + '%'}")
+                img.chip(v-for="item in bets|filterBy 9 in 'betnum'",v-bind:src="item.betimg",v-bind:style="{margin: (Math.random() * 50) + '% 0 0 ' + (Math.random() * 50) + '%'}")
             div.num.big(v-bind:style="big",@touchend="dobet('big')")
-                img.chip(v-for="item in bets|filterBy 'big' in 'betnum'",v-bind:src="chipImg",v-bind:style="{margin: (Math.random() * 50) + '% 0 0 ' + (Math.random() * 50) + '%'}")
+                img.chip(v-for="item in bets|filterBy 'big' in 'betnum'",v-bind:src="item.betimg",v-bind:style="{margin: (Math.random() * 50) + '% 0 0 ' + (Math.random() * 50) + '%'}")
             div.num.small(v-bind:style="small",@touchend="dobet('small')")
-                img.chip(v-for="item in bets|filterBy 'small' in 'betnum'",v-bind:src="chipImg",v-bind:style="{margin: (Math.random() * 50) + '% 0 0 ' + (Math.random() * 50) + '%'}")
+                img.chip(v-for="item in bets|filterBy 'small' in 'betnum'",v-bind:src="item.betimg",v-bind:style="{margin: (Math.random() * 50) + '% 0 0 ' + (Math.random() * 50) + '%'}")
             //- div.num.formula(v-bind:style="formula",v-html="bonusNum") 
             //- div.num.bonudnum(v-bind:style="bonudnum")
                //- table
@@ -40,13 +40,12 @@
 </template>
 <script>
 export default {
-    props: ['zoomRate', 'userinfo', 'lastbets', 'bets', 'userBet', 'countDown', 'countNum', 'lockmoney', 'lotterynum'],
+    props: ['zoomRate', 'userinfo', 'lastbets', 'bets', 'userBet', 'countDown', 'countNum', 'lockmoney', 'lotterynum','chipImg'],
     data() {
         return {
             showBetNum: '', //中奖后在方块中显示此数字
             tablePanelImg: require('../assets/修改切图/数字.png'),
             singleBigImg:require('../assets/修改切图/大小单双.png'),
-            chipImg: require('../assets/切图/主界面/5X筹码-拷贝.png'),
             imgSize: {
                 width: 640,
                 height: 528
@@ -238,6 +237,7 @@ export default {
                         break
                 }
             }
+            this.userBet.betimg = this.chipImg
             this.bets.push(Object.assign({}, this.userBet))
         }
     },
@@ -291,7 +291,7 @@ div.small {
 
 div.num {
     position: absolute;
-    background: rgba(0, 255, 255, .6);
+    /*background: rgba(0, 255, 255, .6);*/
 }
 
 
