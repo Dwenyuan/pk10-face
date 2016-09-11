@@ -30,12 +30,13 @@
                 img.chip(v-for="item in bets|filterBy 'big' in 'betnum'",v-bind:src="chipImg",v-bind:style="{margin: (Math.random() * 50) + '% 0 0 ' + (Math.random() * 50) + '%'}")
             div.num.small(v-bind:style="small",@touchend="dobet('small')")
                 img.chip(v-for="item in bets|filterBy 'small' in 'betnum'",v-bind:src="chipImg",v-bind:style="{margin: (Math.random() * 50) + '% 0 0 ' + (Math.random() * 50) + '%'}")
-            div.num.formula(v-bind:style="formula",v-html="bonusNum") 
-            div.num.bonudnum(v-bind:style="bonudnum")
-                table
-                    tr
-                        td(v-html="isBouns|covert")
-        img(v-bind:src="tablePanelImg",v-bind:style="{width:imgSize.width*zoomRate.x+'px',height:imgSize.height*zoomRate.y+'px'}")
+            //- div.num.formula(v-bind:style="formula",v-html="bonusNum") 
+            //- div.num.bonudnum(v-bind:style="bonudnum")
+               //- table
+               //-      tr
+               //-          td(v-html="isBouns|covert")
+        img(v-bind:src="tablePanelImg",style="margin:15% 0 0 5%;",v-bind:style="{width:imgSize.width*0.9*zoomRate.x+'px',height:imgSize.height*0.43*zoomRate.y+'px'}")
+        img(v-bind:src="singleBigImg",style="margin:0% 0 0 5%;",v-bind:style="{width:imgSize.width*0.9*zoomRate.x+'px',height:imgSize.height*0.25*zoomRate.y+'px'}")
 </template>
 <script>
 export default {
@@ -43,7 +44,8 @@ export default {
     data() {
         return {
             showBetNum: '', //中奖后在方块中显示此数字
-            tablePanelImg: require('../assets/切图/主界面/主操作.png'),
+            tablePanelImg: require('../assets/修改切图/数字.png'),
+            singleBigImg:require('../assets/修改切图/大小单双.png'),
             chipImg: require('../assets/切图/主界面/5X筹码-拷贝.png'),
             imgSize: {
                 width: 640,
@@ -84,107 +86,107 @@ export default {
         },
         single() {
             return {
-                width: 83 * this.zoomRate.x + 'px',
-                height: 83 * this.zoomRate.y + 'px',
-                margin: 20 * this.zoomRate.y + 'px 0 0 ' + 7 * this.zoomRate.x + 'px'
+                width: 110 * this.zoomRate.x + 'px',
+                height: 110 * this.zoomRate.y + 'px',
+                margin: 330 * this.zoomRate.y + 'px 0 0 ' + 340 * this.zoomRate.x + 'px'
             }
         },
         double() {
             return {
-                width: 83 * this.zoomRate.x + 'px',
-                height: 83 * this.zoomRate.y + 'px',
-                margin: 20 * this.zoomRate.y + 'px 0 0 ' + 548 * this.zoomRate.x + 'px'
+                width: 110 * this.zoomRate.x + 'px',
+                height: 110 * this.zoomRate.y + 'px',
+                margin: 330 * this.zoomRate.y + 'px 0 0 ' + 490 * this.zoomRate.x + 'px'
             }
         },
         zero() {
             return {
-                width: 120 * this.zoomRate.x + 'px',
-                height: 120 * this.zoomRate.y + 'px',
-                margin: 174 * this.zoomRate.y + 'px 0 0 ' + (18 + 120 * 0) * this.zoomRate.x + 'px'
+                width: 110 * this.zoomRate.x + 'px',
+                height: 110 * this.zoomRate.y + 'px',
+                margin: 90 * this.zoomRate.y + 'px 0 0 ' + (35 + 115 * 0) * this.zoomRate.x + 'px'
             }
         },
         one() {
             return {
-                width: 120 * this.zoomRate.x + 'px',
-                height: 120 * this.zoomRate.y + 'px',
-                margin: 174 * this.zoomRate.y + 'px 0 0 ' + (18 + 120 * 1) * this.zoomRate.x + 'px'
+                width: 110 * this.zoomRate.x + 'px',
+                height: 110 * this.zoomRate.y + 'px',
+                margin: 90 * this.zoomRate.y + 'px 0 0 ' + (35 + 115 * 1) * this.zoomRate.x + 'px'
             }
         },
         two() {
             return {
-                width: 120 * this.zoomRate.x + 'px',
-                height: 120 * this.zoomRate.y + 'px',
-                margin: 174 * this.zoomRate.y + 'px 0 0 ' + (18 + 120 * 2) * this.zoomRate.x + 'px'
+                width: 110 * this.zoomRate.x + 'px',
+                height: 110 * this.zoomRate.y + 'px',
+                margin: 90 * this.zoomRate.y + 'px 0 0 ' + (35 + 115 * 2) * this.zoomRate.x + 'px'
             }
         },
         three() {
             return {
-                width: 120 * this.zoomRate.x + 'px',
-                height: 120 * this.zoomRate.y + 'px',
-                margin: 174 * this.zoomRate.y + 'px 0 0 ' + (18 + 120 * 3) * this.zoomRate.x + 'px'
+                width: 110 * this.zoomRate.x + 'px',
+                height: 110 * this.zoomRate.y + 'px',
+                margin: 90 * this.zoomRate.y + 'px 0 0 ' + (35 + 115 * 3) * this.zoomRate.x + 'px'
             }
         },
         four() {
             return {
-                width: 120 * this.zoomRate.x + 'px',
-                height: 120 * this.zoomRate.y + 'px',
-                margin: 174 * this.zoomRate.y + 'px 0 0 ' + (18 + 120 * 4) * this.zoomRate.x + 'px'
+                width: 110 * this.zoomRate.x + 'px',
+                height: 110 * this.zoomRate.y + 'px',
+                margin: 90 * this.zoomRate.y + 'px 0 0 ' + (35 + 115 * 4) * this.zoomRate.x + 'px'
             }
         },
         five() {
             return {
-                width: 120 * this.zoomRate.x + 'px',
-                height: 120 * this.zoomRate.y + 'px',
-                margin: (174 + 120) * this.zoomRate.y + 'px 0 0 ' + (18 + 120 * 0) * this.zoomRate.x + 'px'
+                width: 110 * this.zoomRate.x + 'px',
+                height: 110 * this.zoomRate.y + 'px',
+                margin: (90 + 110) * this.zoomRate.y + 'px 0 0 ' + (35 + 115 * 0) * this.zoomRate.x + 'px'
             }
         },
         six() {
             return {
-                width: 120 * this.zoomRate.x + 'px',
-                height: 120 * this.zoomRate.y + 'px',
-                margin: (174 + 120) * this.zoomRate.y + 'px 0 0 ' + (18 + 120 * 1) * this.zoomRate.x + 'px'
+                width: 110 * this.zoomRate.x + 'px',
+                height: 110 * this.zoomRate.y + 'px',
+                margin: (90 + 110) * this.zoomRate.y + 'px 0 0 ' + (35 + 115 * 1) * this.zoomRate.x + 'px'
             }
         },
         seven() {
             return {
-                width: 120 * this.zoomRate.x + 'px',
-                height: 120 * this.zoomRate.y + 'px',
-                margin: (174 + 120) * this.zoomRate.y + 'px 0 0 ' + (18 + 120 * 2) * this.zoomRate.x + 'px'
+                width: 110 * this.zoomRate.x + 'px',
+                height: 110 * this.zoomRate.y + 'px',
+                margin: (90 + 110) * this.zoomRate.y + 'px 0 0 ' + (35 + 115 * 2) * this.zoomRate.x + 'px'
             }
         },
         eight() {
             return {
-                width: 120 * this.zoomRate.x + 'px',
-                height: 120 * this.zoomRate.y + 'px',
-                margin: (174 + 120) * this.zoomRate.y + 'px 0 0 ' + (18 + 120 * 3) * this.zoomRate.x + 'px'
+                width: 110 * this.zoomRate.x + 'px',
+                height: 110 * this.zoomRate.y + 'px',
+                margin: (90 + 110) * this.zoomRate.y + 'px 0 0 ' + (35 + 115 * 3) * this.zoomRate.x + 'px'
             }
         },
         nine() {
             return {
-                width: 120 * this.zoomRate.x + 'px',
-                height: 120 * this.zoomRate.y + 'px',
-                margin: (174 + 120) * this.zoomRate.y + 'px 0 0 ' + (18 + 120 * 4) * this.zoomRate.x + 'px'
+                width: 110 * this.zoomRate.x + 'px',
+                height: 110 * this.zoomRate.y + 'px',
+                margin: (90 + 110) * this.zoomRate.y + 'px 0 0 ' + (35 + 115 * 4) * this.zoomRate.x + 'px'
             }
         },
         big() {
             return {
-                width: 83 * this.zoomRate.x + 'px',
-                height: 83 * this.zoomRate.y + 'px',
-                margin: 425 * this.zoomRate.y + 'px 0 0 ' + 8 * this.zoomRate.x + 'px'
+                width: 110 * this.zoomRate.x + 'px',
+                height: 110 * this.zoomRate.y + 'px',
+                margin: 330 * this.zoomRate.y + 'px 0 0 ' + 40 * this.zoomRate.x + 'px'
             }
         },
         small() {
             return {
-                width: 83 * this.zoomRate.x + 'px',
-                height: 83 * this.zoomRate.y + 'px',
-                margin: 425 * this.zoomRate.y + 'px 0 0 ' + 548 * this.zoomRate.x + 'px'
+                width: 110 * this.zoomRate.x + 'px',
+                height: 110 * this.zoomRate.y + 'px',
+                margin: 330 * this.zoomRate.y + 'px 0 0 ' + 190 * this.zoomRate.x + 'px'
             }
         },
         formula() {
             return {
                 width: 210 * this.zoomRate.x + 'px',
                 textAlign: 'center',
-                // height: 83 * this.zoomRate.y + 'px',
+                // height: 110 * this.zoomRate.y + 'px',
                 fontSize: 42 * this.zoomRate.x + 'px',
                 margin: 37 * this.zoomRate.y + 'px 0 0 ' + 220 * this.zoomRate.x + 'px'
             }
@@ -248,8 +250,8 @@ export default {
 </script>
 <style>
 .playpanel {
-    /*background: url(../assets/切图/主界面/主操作.png) 50% 50%;*/
-    background-size: contain;
+    background:url('../assets/修改切图/主操作背景.png');
+    background-size: cover;
     background-repeat: no-repeat;
     height: 50%;
 }
@@ -270,26 +272,26 @@ div.table-panel {
 
 div.single {
     /*background: rgba(0, 255, 255, .6);*/
-    border-bottom-right-radius: 1em;
+    border-radius: 1em;
 }
 
 div.double {
     /*background: rgba(0, 255, 255, .6);*/
     margin: 3% 0% 0% 86%;
-    border-bottom-left-radius: 1em;
+    border-radius: 1em;
 }
 
 div.big {
-    border-top-right-radius: 1em;
+    border-radius: 1em;
 }
 
 div.small {
-    border-top-left-radius: 1em;
+    border-radius: 1em;
 }
 
 div.num {
     position: absolute;
-    /*background: rgba(0, 255, 255, .6);*/
+    background: rgba(0, 255, 255, .6);
 }
 
 

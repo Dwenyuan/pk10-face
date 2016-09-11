@@ -37,7 +37,7 @@ export default {
     position: relative;
     height: 5%;
     padding: 1% 3% 1% 1%;
-    background: #e14f50;
+    background: url('./../assets/修改切图/通知栏.png');
     z-index: 1;
 }
 
@@ -45,7 +45,7 @@ div.notice {
     height: 100%;
     width: 60%;
     border-radius: 1.5em;
-    background: #eebebe;
+    background: url('./../assets/修改切图/通知栏内.png');
     color: #783a3f;
     float: left;
     text-align: center;

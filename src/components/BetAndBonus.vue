@@ -1,18 +1,26 @@
 <template lang="pug">
     //- 展示用户的下注金额 以及 奖金金额 当然还有倒计时
     div.bonus-bar
-        div.bonus-item.bet
-            div.item-back.forzen
-                div.item-show
-                    div.bet-num(v-bind:style="betNum",v-html="lockmoney")
-        div.bonus-item.count-down
-            div.count-down-back
-                div.count-down-show
-                    div.count-down-num(v-bind:style="{fontSize:40*zoomRate.x+'px'}",v-html="countDown | time")
-        div.bonus-item.bonus
-            div.item-back.balance
-                div.item-show(@touchend="showMessage")
-                    div.bet-num(v-bind:style="betNum" v-html="userinfo.money-lockmoney")
+       //- div.bonus-item.bet
+       //-     div.item-back.forzen
+       //-         div.item-show
+       //-             div.bet-num(v-bind:style="betNum",v-html="lockmoney")
+       //- div.bonus-item.count-down
+       //-     div.count-down-back
+       //-         div.count-down-show
+       //-             div.count-down-num(v-bind:style="{fontSize:40*zoomRate.x+'px'}",v-html="countDown | time")
+       //- div.bonus-item.bonus
+       //-     div.item-back.balance
+       //-         div.item-show(@touchend="showMessage")
+       //-             div.bet-num(v-bind:style="betNum" v-html="userinfo.money-lockmoney")
+       div.left-split
+       div.left
+            div.betnum 上期 
+                span(v-html="bonusNum")
+            div.bettype 小单四&nbsp;
+                span 往期
+       div.right
+            div.count-down-num(v-html="countDown | time")
 </template>
 <script>
 import RequestList from '../js/request-list'
@@ -28,6 +36,14 @@ export default {
         }
     },
     computed: {
+        bonusNum() {
+            var nums = this.lotterynum.lotterynums.split(',')
+            var sum = parseInt(nums[0]) + parseInt(nums[nums.length - 1])
+            var showsum = isNaN(sum) ? '?' : (Math.floor(sum / 10) ? Math.floor(sum / 10) : '') + '(' + sum % 10 + ')'
+            var firstnum = isNaN(parseInt(nums[0])) ? '?' : parseInt(nums[0])
+            var secnum = isNaN(parseInt(nums[nums.length - 1])) ? '?' : parseInt(nums[nums.length - 1])
+            return firstnum + '+' + secnum + '=' + showsum
+        },
         betNum() {
             return {
                 fontSize: 34 * this.zoomRate.x + 'px',
@@ -117,7 +133,38 @@ img {
     width: 100%;
     height: 100%;
 }
-
+div.left-split{
+    width:6%;
+    height: 100%;
+    float: left;
+}
+div.left{
+    width:45%;
+    height:100%;
+    float:left;
+    background:url('../assets/修改切图/文字.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: 0% 6%;
+}
+div.right{
+    width:55%;
+    height:100%;
+    float:left;
+    background:url('../assets/修改切图/倒计时副本.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: 0% 6%;
+    margin: 1% 0 0 -12%;
+}
+div.betnum{
+    position: absolute;
+    margin: 6% 0 0 14%;
+}
+div.bettype{
+    position: absolute;
+    margin: 11% 0 0 14%;
+}
 div.forzen {
     height: 100%;
     width: 80%;
@@ -140,6 +187,9 @@ div.balance {
 
 .bonus-bar {
     height: 20%;
+    background:url('./../assets/修改切图/水墨画.png');
+    background-size:cover;
+    background-repeat:no-repeat;
 }
 
 div.item-back {
@@ -181,7 +231,9 @@ div.count-down-num {
     display: table-cell;
     vertical-align: middle;
     text-align: center;
-    font-size: 2em;
+    position: absolute;
+    margin: 4% 0 0 41%;
+    font-size: 1.2em;
 }
 
 div.count-down-back {
