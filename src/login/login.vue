@@ -85,10 +85,10 @@ export default {
     data() {
         return {
             userInfo: {
-                username: 'liushao121',
-                password: '12333333',
-                confirm: '12333333',
-                tel: '12345678901',
+                username: '',
+                password: '',
+                confirm: '',
+                tel: '',
                 checknum: ''
             },
             checkusernameflag: false,

@@ -2,9 +2,9 @@
 > pk10@1.0.0 build /Users/liushao/Documents/workface/1
 > webpack
 
-Hash: 64575644ada85f338014
+Hash: d392cd27d6f1818b4117
 Version: webpack 1.13.2
-Time: 17593ms
+Time: 16332ms
                                Asset     Size  Chunks             Chunk Names
 016a9a8043902d58b25c9ba2a79c39e5.png  7.04 kB          [emitted]  
 7055474922115f39ece85693ab42650c.png   438 kB          [emitted]  

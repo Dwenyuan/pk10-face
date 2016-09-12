@@ -17,8 +17,9 @@
        div.left
             div.betnum 上期 
                 span(v-html="bonusNum.num")
-            div.bettype(v-html="bonusNum.text") &nbsp;
-                span 往期
+            div.bettype
+                span(v-html="bonusNum.text+'&nbsp;&nbsp;'")
+                span(@touchend="showMessage") 往期
        div.right
             div.count-down-num(v-html="countDown | time")
 </template>
@@ -107,7 +108,7 @@ export default {
             this.countDown = this.countNum
         },
         showMessage() {
-            this.$dispatch('showMessage', 5)
+            this.$dispatch('showMessage', 1) //查看往期开镜记录
         },
         count() {
             // 距离开奖时间30秒时 买定离手

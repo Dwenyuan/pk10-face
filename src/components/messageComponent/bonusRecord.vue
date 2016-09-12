@@ -1,10 +1,14 @@
 <template lang="pug">
     div.bet-info(v-bind:style="content")
         div.record(v-for="item in bonusRecord")
-            p.created-time(v-html="item.createdAt | datetime")
-            p.bonus-num
-                span 开奖号码：
-                span(v-html="lotterynum(item.lotterynums)")
+            div.split-record(v-html="item.id")
+            div.split-record(v-html="lotterynum(item.lotterynums)")
+            div.split-record(v-html="lotterynum(item.lotterynums)>=5?'大':'小'")
+            div.split-record(v-html="lotterynum(item.lotterynums)%2==0?'双':'单'")
+            //- p.created-time(v-html="item.createdAt | datetime")
+            //- p.bonus-num
+                //- span 开奖号码：
+                //- span(v-html="lotterynum(item.lotterynums)")
 </template>
 <script>
 import RequestList from '../../js/request-list'
@@ -40,19 +44,26 @@ export default {
 }
 </script>
 <style>
-div.bet-info {
-    position: absolute;
-    overflow: auto;
-    padding: 10px;
-}
-
-div.record {
-    color: white;
-    margin-bottom: 2em;
-}
-
-div.record p {
-    margin-bottom: .5em;
-    margin-top: .5em;
-}
+    div.bet-info {
+        position: absolute;
+        overflow: auto;
+        padding: 10px;
+    }
+    
+    div.record {
+        color: white;
+        margin-bottom: 2em;
+        padding: 5px;
+    }
+    
+    div.record p {
+        margin-bottom: .5em;
+        margin-top: .5em;
+    }
+    
+    div.split-record {
+        float: left;
+        text-align: center;
+        width: 25%;
+    }
 </style>
