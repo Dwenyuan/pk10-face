@@ -14,7 +14,7 @@ module.exports.getAllBonusNums = (params) => Vue.http.get('getBonusRecord', para
 // 买定离手
 module.exports.createUserBets = (params) => Vue.http.post('createUserBets', params);
 // 获取最近下注
-module.exports.getRecentlyBets = (params) => Vue.http.get('getRecentlyBets', params);
+module.exports.getRecentlyBets = (params) => Vue.http.get('userbet/getRecentlyBets', params);
 
 module.exports.getuserCodeFromNet = (code) => Vue.http.get('getUserCode', { params: { code: code } });
 // 获取用户信息

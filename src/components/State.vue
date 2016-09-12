@@ -1,20 +1,20 @@
 <template lang="pug">
     //- 状态区 ，展示用户的一些状态
     div.state
-        div.state-item.money.table
+        div.state-item.money.table(@touchend="showMessage")
             div.my-money 我的金豆
                 span 
                     img.moneyplus(v-bind:src="moneyplus")
             div.my-money.my-money-show(v-html="userinfo.money-lockmoney")
         div.dobet-money-btn
             div.dobet-money-item-btn(@touchend="changecounter(100)")
-                div.show-money-num 100
+                div.bet-text(v-show="this.userBet.betmoney===100")
             div.dobet-money-item-btn(@touchend="changecounter(1000)")
-                div.show-money-num 1000
+                div.bet-text(v-show="this.userBet.betmoney===1000")
             div.dobet-money-item-btn(@touchend="changecounter(10000)")
-                div.show-money-num 10000
+                div.bet-text(v-show="this.userBet.betmoney===10000")
             div.dobet-money-item-btn(@touchend="changecounter(100000)")
-                div.show-money-num 100000
+                div.bet-text(v-show="this.userBet.betmoney===100000")
             div.dobet-money-item-btn(@touchend="cancelbet")
         //-     div.money-state.table-cell
         //-         div.button
@@ -82,19 +82,19 @@ export default {
             this.userBet.betmoney = event
             switch(event){
                 case 100:
-                    this.chipImg = require('../assets/切图/主界面/1X筹码-拷贝.png')
+                    this.chipImg = require('./../assets/修改切图/100.png')
                     break;
                 case 1000:
-                    this.chipImg = require('../assets/切图/主界面/5X筹码-拷贝.png')
+                    this.chipImg = require('./../assets/修改切图/1000.png')
                     break;
                 case 10000:
-                    this.chipImg = require('../assets/切图/主界面/10X筹码-拷贝.png')
+                    this.chipImg = require('./../assets/修改切图/10000.png')
                     break;
                 case 100000:
-                    this.chipImg = require('../assets/切图/主界面/10X筹码-拷贝.png')
+                    this.chipImg = require('./../assets/修改切图/100000.png')
                     break;
                 default:
-                    this.chipImg = require('../assets/切图/主界面/1X筹码-拷贝.png')
+                    this.chipImg = require('./../assets/修改切图/1000.png')
                     break;
             }
         },
@@ -167,6 +167,28 @@ export default {
         margin: 16% 0 0 7%;
     }
     
+    div.bet-text {
+        width: 50%;
+        height: 50%;
+        /*background:url('./../assets/修改切图/杵.png') no-repeat;*/
+        margin: 15% 0 0 20%;
+    }
+    
+    div.dobet-money-item-btn:nth-child(1)>div.bet-text {
+        background: url('./../assets/修改切图/杵.png') no-repeat;
+        background-size: inherit;
+    }
+    
+    div.dobet-money-item-btn:nth-child(2)>div.bet-text {
+        background: url('./../assets/修改切图/泾.png') no-repeat;
+        background-size: inherit;
+    }
+    
+    div.dobet-money-item-btn:nth-child(4)>div.bet-text {
+        background: url('./../assets/修改切图/金.png') no-repeat;
+        background-size: inherit;
+    }
+    
     div.show-money-num {
         text-align: center;
         color: white;
@@ -224,22 +246,22 @@ export default {
     }
     
     div.dobet-money-item-btn:nth-child(1) {
-        background: url('./../assets/切图/主界面/1X筹码-拷贝.png') no-repeat 50% 50%;
+        background: url('./../assets/修改切图/100.png') no-repeat 50% 50%;
         background-size: contain;
     }
     
     div.dobet-money-item-btn:nth-child(2) {
-        background: url('./../assets/切图/主界面/5X筹码-拷贝.png') no-repeat 50% 50%;
+        background: url('./../assets/修改切图/1000.png') no-repeat 50% 50%;
         background-size: contain;
     }
     
     div.dobet-money-item-btn:nth-child(3) {
-        background: url('./../assets/切图/主界面/10X筹码-拷贝.png') no-repeat 50% 50%;
+        background: url('./../assets/修改切图/10000.png') no-repeat 50% 50%;
         background-size: contain;
     }
     
     div.dobet-money-item-btn:nth-child(4) {
-        background: url('./../assets/修改切图/撤销.png') no-repeat 50% 50%;
+        background: url('./../assets/修改切图/100000.png') no-repeat 50% 50%;
         background-size: contain;
     }
     

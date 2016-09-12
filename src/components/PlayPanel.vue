@@ -253,7 +253,7 @@ export default {
     background:url('../assets/修改切图/主操作背景.png');
     background-size: cover;
     background-repeat: no-repeat;
-    height: 50%;
+    height: 55%;
 }
 
 img.chip {

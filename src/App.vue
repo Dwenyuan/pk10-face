@@ -42,7 +42,7 @@ export default {
                 betmoney: 1000 //默认下注金额为1000
 
             },
-            chipImg:require('./assets/切图/主界面/5X筹码-拷贝.png'),
+            chipImg:require('./assets/修改切图/1000.png'),
             lastbets: [], // 上次投注结果
             isinit: true,
             gameData: gameData,
