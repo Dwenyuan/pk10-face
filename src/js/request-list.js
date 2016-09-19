@@ -12,7 +12,7 @@ module.exports.getBonusNum = (params) => Vue.http.get('getBonusNum', params);
 // 获取开奖记录
 module.exports.getAllBonusNums = (params) => Vue.http.get('getBonusRecord', params);
 // 买定离手
-module.exports.createUserBets = (params) => Vue.http.post('createUserBets', params);
+module.exports.createUserBets = (params) => Vue.http.post('userbet/createUserBets', params);
 // 获取最近下注
 module.exports.getRecentlyBets = (params) => Vue.http.get('userbet/getRecentlyBets', params);
 
@@ -23,16 +23,18 @@ module.exports.getuserinfo = (userinfo) => Vue.http.post('getuserinfo', userinfo
 module.exports.getAllUserInfo = () => Vue.http.get('getUserInfoList');
 // 获取公告信息
 module.exports.getLastNotice = () => Vue.http.get('getLastNotice');
+
+module.exports.logout = () => Vue.http.get('logout');
 // 请求兑奖
 module.exports.cashPrize = (userinfo) => Vue.http.post('cashPrize', userinfo);
 // 获取微信用户code 用来后台获取用户openid
-module.exports.getCode = function() { // 获取用户code值
-        var reg = new RegExp("(^|&)" + 'code' + "=([^&]*)(&|$)", "i");
-        var r = window.location.search.substr(1).match(reg);
-        if (r != null) return unescape(r[2]);
-        return null;
-    }
-    /****后台管理用***/
+module.exports.getCode = function () { // 获取用户code值
+    var reg = new RegExp("(^|&)" + 'code' + "=([^&]*)(&|$)", "i");
+    var r = window.location.search.substr(1).match(reg);
+    if (r != null) return unescape(r[2]);
+    return null;
+}
+/****后台管理用***/
 module.exports.updateuserinfo = (params) => Vue.http.post('updateuserinfo', params);
 
 // 获取所有系统设置信息

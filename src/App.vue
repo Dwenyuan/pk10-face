@@ -42,7 +42,7 @@ export default {
                 betmoney: 1000 //默认下注金额为1000
 
             },
-            chipImg:require('./assets/修改切图/1000.png'),
+            chipImg:require('./assets/切图/主界面/铜-筹码.png'),
             lastbets: [], // 上次投注结果
             isinit: true,
             gameData: gameData,
@@ -52,7 +52,7 @@ export default {
                 lotterynums: ''
             },
             // wx: wx,
-            countDown: 300, // 倒计时秒数
+            countDown: 59, // 倒计时秒数
             countNum: 300, //开奖时间间隔 默认3分钟
             error: false,
             bets: [], // 下注集合，可以单次下多注

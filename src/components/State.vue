@@ -82,24 +82,24 @@ export default {
             this.userBet.betmoney = event
             switch(event){
                 case 100:
-                    this.chipImg = require('./../assets/修改切图/100.png')
+                    this.chipImg = require('./../assets/切图/主界面/铁-筹码.png')
                     break;
                 case 1000:
-                    this.chipImg = require('./../assets/修改切图/1000.png')
+                    this.chipImg = require('./../assets/切图/主界面/铜-筹码.png')
                     break;
                 case 10000:
-                    this.chipImg = require('./../assets/修改切图/10000.png')
+                    this.chipImg = require('./../assets/切图/主界面/银-筹码.png')
                     break;
                 case 100000:
-                    this.chipImg = require('./../assets/修改切图/100000.png')
+                    this.chipImg = require('./../assets/切图/主界面/金-筹码.png')
                     break;
                 default:
-                    this.chipImg = require('./../assets/修改切图/1000.png')
+                    this.chipImg = require('./../assets/切图/主界面/银-筹码.png')
                     break;
             }
         },
         showMessage() {
-            this.$dispatch('showMessage', 5) // 5代表背景数组的最后一个，即显示充值的背景
+            this.$dispatch('showMessage', 4) // 5代表背景数组的最后一个，即显示充值的背景
         },
         cancelbet() {
             if (this.countDown > 30) { // 倒计时超过30秒是才能取消下注
@@ -181,6 +181,11 @@ export default {
     
     div.dobet-money-item-btn:nth-child(2)>div.bet-text {
         background: url('./../assets/修改切图/泾.png') no-repeat;
+        background-size: inherit;
+    }
+    
+    div.dobet-money-item-btn:nth-child(3)>div.bet-text {
+        background: url('./../assets/修改切图/銀.png') no-repeat;
         background-size: inherit;
     }
     

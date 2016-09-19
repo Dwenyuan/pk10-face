@@ -7,6 +7,7 @@
             img(v-bind:src="dialogImg[currentIndex].background")
 </template>
 <script>
+import RequestList from '../js/request-list'
 export default {
     props: ['zoomRate', 'userinfo'],
     data() {
@@ -17,10 +18,6 @@ export default {
                 type: 'betInfo',
                 background: require('../assets/切图/投注记录/投注记录.png'),
                 close: require('../assets/切图/投注记录/关闭.png')
-            }, {
-                type: 'bonusRecord',
-                background: require('../assets/切图/开奖记录/开奖记录.png'),
-                close: require('../assets/切图/开奖记录/关闭.png')
             }, {
                 type: 'ruleIntroduce',
                 background: require('../assets/切图/游戏规则/游戏规则.png'),
@@ -37,6 +34,10 @@ export default {
                 type: 'recharge',
                 background: require('../assets/切图/充值/底.png'),
                 close: require('../assets/切图/充值/关闭.png')
+            }, {
+                type: 'bonusRecord',
+                background: require('../assets/切图/开奖记录/开奖记录.png'),
+                close: require('../assets/切图/开奖记录/关闭.png')
             }]
         }
     },
@@ -66,6 +67,10 @@ export default {
     },
     events: {
         showMessage(event) {
+            if(event == 4){
+                RequestList.logout().then(res=>window.location.href='userlogin.html',res=>this.$dispatch('showTip','退出失败'))
+                return 
+            }
             this.dialogShow = true
             this.currentIndex = event
         }
@@ -80,37 +85,37 @@ export default {
 }
 </script>
 <style>
-div.model {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    z-index: 999;
-    /*background: rgba(12,26,55,.35);*/
-    background: url(../assets/切图/暗色挡板.png);
-    top: 0;
-    /*padding: 10% 7.5%;*/
-}
-
-.message-transition {
-    transition: all .3s ease;
-}
-
-.message-enter,
-.message-leave {
-    opacity: 0;
-}
-
-div.title {
-    height: 20%;
-    /*background: black;*/
-}
-
-div.close {
-    position: absolute;
-}
-
-div.content {
-    position: absolute;
-    /*background: rgba(0, 0, 0, .6);*/
-}
+    div.model {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: 999;
+        /*background: rgba(12,26,55,.35);*/
+        background: url(../assets/切图/暗色挡板.png);
+        top: 0;
+        /*padding: 10% 7.5%;*/
+    }
+    
+    .message-transition {
+        transition: all .3s ease;
+    }
+    
+    .message-enter,
+    .message-leave {
+        opacity: 0;
+    }
+    
+    div.title {
+        height: 20%;
+        /*background: black;*/
+    }
+    
+    div.close {
+        position: absolute;
+    }
+    
+    div.content {
+        position: absolute;
+        /*background: rgba(0, 0, 0, .6);*/
+    }
 </style>

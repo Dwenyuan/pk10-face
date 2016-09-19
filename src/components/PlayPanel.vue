@@ -4,32 +4,46 @@
         div.table-panel(v-el:panel,v-bind:style="{width:imgSize.width*zoomRate.x+'px',height:imgSize.height*zoomRate.y+'px'}")
             div.num.single(v-bind:style="single",@touchend="dobet('single')")
                 img.chip(v-for="item in bets|filterBy 'single' in 'betnum'",v-bind:src="item.betimg",v-bind:style="{margin: (Math.random() * 50) + '% 0 0 ' + (Math.random() * 50) + '%'}")
+                p.bet-money-item(v-show="betsum('double')",v-html="betsum('single')")
             div.num.double(v-bind:style="double",@touchend="dobet('double')")
                 img.chip(v-for="item in bets|filterBy 'double' in 'betnum'",v-bind:src="item.betimg",v-bind:style="{margin: (Math.random() * 50) + '% 0 0 ' + (Math.random() * 50) + '%'}")
+                p.bet-money-item(v-show="betsum('double')",v-html="betsum('double')")
             div.num.zero(v-bind:style="zero",@touchend="dobet(0)")
                 img.chip(v-for="item in bets|filterBy 0 in 'betnum'",v-bind:src="item.betimg",v-bind:style="{margin: (Math.random() * 50) + '% 0 0 ' + (Math.random() * 50) + '%'}")
+                p.bet-money-item(v-show="betsum(0)",v-html="betsum(0)")
             div.num.one(v-bind:style="one",@touchend="dobet(1)")
                 img.chip(v-for="item in bets|filterBy 1 in 'betnum'",v-bind:src="item.betimg",v-bind:style="{margin: (Math.random() * 50) + '% 0 0 ' + (Math.random() * 50) + '%'}")
+                p.bet-money-item(v-show="betsum(1)",v-html="betsum(1)")
             div.num.two(v-bind:style="two",@touchend="dobet(2)")
                 img.chip(v-for="item in bets|filterBy 2 in 'betnum'",v-bind:src="item.betimg",v-bind:style="{margin: (Math.random() * 50) + '% 0 0 ' + (Math.random() * 50) + '%'}")
+                p.bet-money-item(v-show="betsum(2)",v-html="betsum(2)")
             div.num.three(v-bind:style="three",@touchend="dobet(3)")
                 img.chip(v-for="item in bets|filterBy 3 in 'betnum'",v-bind:src="item.betimg",v-bind:style="{margin: (Math.random() * 50) + '% 0 0 ' + (Math.random() * 50) + '%'}")
+                p.bet-money-item(v-show="betsum(3)",v-html="betsum(3)")
             div.num.four(v-bind:style="four",@touchend="dobet(4)")
                 img.chip(v-for="item in bets|filterBy 4 in 'betnum'",v-bind:src="item.betimg",v-bind:style="{margin: (Math.random() * 50) + '% 0 0 ' + (Math.random() * 50) + '%'}")
+                p.bet-money-item(v-show="betsum(4)",v-html="betsum(4)")
             div.num.five(v-bind:style="five",@touchend="dobet(5)")
                 img.chip(v-for="item in bets|filterBy 5 in 'betnum'",v-bind:src="item.betimg",v-bind:style="{margin: (Math.random() * 50) + '% 0 0 ' + (Math.random() * 50) + '%'}")
+                p.bet-money-item(v-show="betsum(5)",v-html="betsum(5)")
             div.num.six(v-bind:style="six",@touchend="dobet(6)")
                 img.chip(v-for="item in bets|filterBy 6 in 'betnum'",v-bind:src="item.betimg",v-bind:style="{margin: (Math.random() * 50) + '% 0 0 ' + (Math.random() * 50) + '%'}")
+                p.bet-money-item(v-show="betsum(6)",v-html="betsum(6)")
             div.num.seven(v-bind:style="seven",@touchend="dobet(7)")
                 img.chip(v-for="item in bets|filterBy 7 in 'betnum'",v-bind:src="item.betimg",v-bind:style="{margin: (Math.random() * 50) + '% 0 0 ' + (Math.random() * 50) + '%'}")
+                p.bet-money-item(v-show="betsum(7)",v-html="betsum(7)")
             div.num.eight(v-bind:style="eight",@touchend="dobet(8)")
                 img.chip(v-for="item in bets|filterBy 8 in 'betnum'",v-bind:src="item.betimg",v-bind:style="{margin: (Math.random() * 50) + '% 0 0 ' + (Math.random() * 50) + '%'}")
+                p.bet-money-item(v-show="betsum(8)",v-html="betsum(8)")
             div.num.nine(v-bind:style="nine",@touchend="dobet(9)")
                 img.chip(v-for="item in bets|filterBy 9 in 'betnum'",v-bind:src="item.betimg",v-bind:style="{margin: (Math.random() * 50) + '% 0 0 ' + (Math.random() * 50) + '%'}")
+                p.bet-money-item(v-show="betsum(9)",v-html="betsum(9)")
             div.num.big(v-bind:style="big",@touchend="dobet('big')")
                 img.chip(v-for="item in bets|filterBy 'big' in 'betnum'",v-bind:src="item.betimg",v-bind:style="{margin: (Math.random() * 50) + '% 0 0 ' + (Math.random() * 50) + '%'}")
+                p.bet-money-item(v-show="betsum('big')",v-html="betsum('big')")
             div.num.small(v-bind:style="small",@touchend="dobet('small')")
                 img.chip(v-for="item in bets|filterBy 'small' in 'betnum'",v-bind:src="item.betimg",v-bind:style="{margin: (Math.random() * 50) + '% 0 0 ' + (Math.random() * 50) + '%'}")
+                p.bet-money-item(v-show="betsum('small')",v-html="betsum('small')")
             //- div.num.formula(v-bind:style="formula",v-html="bonusNum") 
             //- div.num.bonudnum(v-bind:style="bonudnum")
                //- table
@@ -203,6 +217,15 @@ export default {
         }
     },
     methods: {
+        betsum(index){//单个下注总金额 ，比如下了多少金币在数字0上
+            let result=0
+            this.bets.forEach(value=>{
+                if(value.betnum === index){
+                    result+=value.betmoney
+                }
+            })
+            return result
+        },
         bet(event) {
             console.log('Height' + event.target.offsetHeight)
             console.log('Width' + event.target.offsetWidth)
@@ -249,62 +272,72 @@ export default {
 }
 </script>
 <style>
-.playpanel {
-    background:url('../assets/修改切图/主操作背景.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    height: 55%;
-}
-
-img.chip {
-    width: 50%;
-    height: 50%;
-    position: absolute;
-}
-
-div.table-panel {
-    width: 100%;
-    height: 50%;
-    position: absolute;
-    /*display: none;*/
-    /*background: rgba(255, 0, 0, .3);*/
-}
-
-div.single {
-    /*background: rgba(0, 255, 255, .6);*/
-    border-radius: 1em;
-}
-
-div.double {
-    /*background: rgba(0, 255, 255, .6);*/
-    margin: 3% 0% 0% 86%;
-    border-radius: 1em;
-}
-
-div.big {
-    border-radius: 1em;
-}
-
-div.small {
-    border-radius: 1em;
-}
-
-div.num {
-    position: absolute;
-    /*background: rgba(0, 255, 255, .6);*/
-}
-
-
-/*中奖*/
-
-div.bonudnum.active {
-    /*background: url(../assets/切图/主界面/显示-绿.png) 50% 50%;*/
-}
-
-div.bonudnum {
-    /*background: url(../assets/切图/主界面/显示-红.png) 50% 50%;*/
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: 50% 50%;
-}
+    .playpanel {
+        background: url('../assets/修改切图/主操作背景.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: 50%;
+        background-position: 50% 50%;
+    }
+    
+    img.chip {
+        width: 50%;
+        height: 50%;
+        position: absolute;
+    }
+    
+    div.table-panel {
+        width: 100%;
+        height: 50%;
+        position: absolute;
+        /*display: none;*/
+        /*background: rgba(255, 0, 0, .3);*/
+    }
+    
+    div.single {
+        /*background: rgba(0, 255, 255, .6);*/
+        border-radius: 1em;
+    }
+    
+    div.double {
+        /*background: rgba(0, 255, 255, .6);*/
+        margin: 3% 0% 0% 86%;
+        border-radius: 1em;
+    }
+    
+    div.big {
+        border-radius: 1em;
+    }
+    
+    div.small {
+        border-radius: 1em;
+    }
+    
+    div.num {
+        position: absolute;
+        /*background: rgba(0, 255, 255, .6);*/
+    }
+    
+    p.bet-money-item {
+        margin: 90% 0 0;
+        float: left;
+        background: rgba(0, 0, 0, .3);
+        padding: 5px;
+        border-radius: 10px;
+        font-size: 12px;
+        position: relative;
+        color: rgb(250, 250, 250);
+    }
+    /*中奖*/
+    
+    div.bonudnum.active {
+        /*background: url(../assets/切图/主界面/显示-绿.png) 50% 50%;*/
+    }
+    
+    div.bonudnum {
+        /*background: url(../assets/切图/主界面/显示-红.png) 50% 50%;*/
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: 50% 50%;
+    }
 </style>

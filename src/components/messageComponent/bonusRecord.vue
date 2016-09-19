@@ -1,5 +1,10 @@
 <template lang="pug">
     div.bet-info(v-bind:style="content")
+        div.record
+            div.split-record 期数
+            div.split-record 开奖结果
+            div.split-record 大小
+            div.split-record 单双
         div.record(v-for="item in bonusRecord")
             div.split-record(v-html="item.id")
             div.split-record(v-html="lotterynum(item.lotterynums)")
@@ -29,7 +34,7 @@ export default {
             }
             // 中奖数字总共十位数，取第一位和最后一位相加结果的个位数作为开奖结果
             nums = nums.split(',')
-            return (nums[0] + nums[nums.length - 1]) % 10
+            return (parseInt(nums[0]) + parseInt(nums[nums.length - 1])) % 10
         }
     },
     computed: {

@@ -5,6 +5,9 @@ import VueResource from 'vue-resource'
 import RequestList from './js/request-list'
 Vue.use(VueResource)
 Vue.filter('time', function (value) {
+    if(value<60){
+        return '等待开奖'
+    }
     let hour = Math.floor(value / 3600)
     let min = Math.floor((value % 3600) / 60)
     if (hour < 10) {

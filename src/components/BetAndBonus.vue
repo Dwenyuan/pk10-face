@@ -108,7 +108,7 @@ export default {
             this.countDown = this.countNum
         },
         showMessage() {
-            this.$dispatch('showMessage', 1) //查看往期开镜记录
+            this.$dispatch('showMessage', 5) //查看往期开镜记录
         },
         count() {
             // 距离开奖时间30秒时 买定离手
