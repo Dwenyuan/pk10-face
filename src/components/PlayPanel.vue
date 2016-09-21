@@ -53,225 +53,230 @@
         img(v-bind:src="singleBigImg",style="margin:0% 0 0 5%;",v-bind:style="{width:imgSize.width*0.9*zoomRate.x+'px',height:imgSize.height*0.25*zoomRate.y+'px'}")
 </template>
 <script>
-export default {
-    props: ['zoomRate', 'userinfo', 'lastbets', 'bets', 'userBet', 'countDown', 'countNum', 'lockmoney', 'lotterynum','chipImg'],
-    data() {
-        return {
-            showBetNum: '', //中奖后在方块中显示此数字
-            tablePanelImg: require('../assets/修改切图/数字.png'),
-            singleBigImg:require('../assets/修改切图/大小单双.png'),
-            imgSize: {
-                width: 640,
-                height: 528
+    export default {
+        props: ['zoomRate', 'userinfo', 'lastbets', 'bets', 'userBet', 'countDown', 'countNum', 'lockmoney', 'lotterynum', 'chipImg'],
+        data() {
+            return {
+                showBetNum: '', //中奖后在方块中显示此数字
+                tablePanelImg: require('../assets/修改切图/数字.png'),
+                singleBigImg: require('../assets/修改切图/大小单双.png'),
+                imgSize: {
+                    width: 640,
+                    height: 528
+                }
             }
-        }
-    },
-    computed: {
-        // TODO 重新设定中奖规则
-        bonusNum() {
-            var nums = this.lotterynum.lotterynums.split(',')
-            var sum = parseInt(nums[0]) + parseInt(nums[nums.length - 1])
-            var showsum = isNaN(sum) ? '?' : (Math.floor(sum / 10) ? Math.floor(sum / 10) : '') + '(' + sum % 10 + ')'
-            var firstnum = isNaN(parseInt(nums[0])) ? '?' : parseInt(nums[0])
-            var secnum = isNaN(parseInt(nums[nums.length - 1])) ? '?' : parseInt(nums[nums.length - 1])
-            return firstnum + '+' + secnum + '=' + showsum
         },
-        // 是否中奖 中奖的话显示为方块绿色
-        isBouns() {
-            var _this = this
-            var nums = this.lotterynum.lotterynums.split(',')
-            var sum = parseInt(nums[0]) + parseInt(nums[nums.length - 1])
-            var checkBouns = (betnum, bonudnum) => { //判断是否中奖
-                if (betnum === bonudnum % 10) return true
-                if (betnum === 'single' && bonudnum % 2 === 1) return true
-                if (betnum === 'double' && bonudnum % 2 === 0) return true
-                if (betnum === 'big' && bonudnum >= 5) return true
-                if (betnum === 'small' && bonudnum < 5) return true
+        computed: {
+            // TODO 重新设定中奖规则
+            bonusNum() {
+                var nums = this.lotterynum.lotterynums.split(',')
+                var sum = parseInt(nums[0]) + parseInt(nums[nums.length - 1])
+                var showsum = isNaN(sum) ? '?' : (Math.floor(sum / 10) ? Math.floor(sum / 10) : '') + '(' + sum % 10 + ')'
+                var firstnum = isNaN(parseInt(nums[0])) ? '?' : parseInt(nums[0])
+                var secnum = isNaN(parseInt(nums[nums.length - 1])) ? '?' : parseInt(nums[nums.length - 1])
+                return firstnum + '+' + secnum + '=' + showsum
+            },
+            // 是否中奖 中奖的话显示为方块绿色
+            isBouns() {
+                var _this = this
+                var nums = this.lotterynum.lotterynums.split(',')
+                var sum = parseInt(nums[0]) + parseInt(nums[nums.length - 1])
+                var checkBouns = (betnum, bonudnum) => { //判断是否中奖
+                    if (betnum === bonudnum % 10) return true
+                    if (betnum === 'single' && bonudnum % 2 === 1) return true
+                    if (betnum === 'double' && bonudnum % 2 === 0) return true
+                    if (betnum === 'big' && bonudnum >= 5) return true
+                    if (betnum === 'small' && bonudnum < 5) return true
 
-                return false
-            }
-            this.lastbets ? this.lastbets.forEach((key, value) => {
-                if (this.userBet.idnum === value.idnum + 1 && checkBouns(value.betnum, sum)) { //只显示上次开奖结果
-                    _this.showBetNum = value.betnum
+                    return false
                 }
-            }) : ''
-            return this.showBetNum || this.showBetNum === 0 ? this.showBetNum : ''
-        },
-        single() {
-            return {
-                width: 110 * this.zoomRate.x + 'px',
-                height: 110 * this.zoomRate.y + 'px',
-                margin: 330 * this.zoomRate.y + 'px 0 0 ' + 340 * this.zoomRate.x + 'px'
-            }
-        },
-        double() {
-            return {
-                width: 110 * this.zoomRate.x + 'px',
-                height: 110 * this.zoomRate.y + 'px',
-                margin: 330 * this.zoomRate.y + 'px 0 0 ' + 490 * this.zoomRate.x + 'px'
-            }
-        },
-        zero() {
-            return {
-                width: 110 * this.zoomRate.x + 'px',
-                height: 110 * this.zoomRate.y + 'px',
-                margin: 90 * this.zoomRate.y + 'px 0 0 ' + (35 + 115 * 0) * this.zoomRate.x + 'px'
-            }
-        },
-        one() {
-            return {
-                width: 110 * this.zoomRate.x + 'px',
-                height: 110 * this.zoomRate.y + 'px',
-                margin: 90 * this.zoomRate.y + 'px 0 0 ' + (35 + 115 * 1) * this.zoomRate.x + 'px'
-            }
-        },
-        two() {
-            return {
-                width: 110 * this.zoomRate.x + 'px',
-                height: 110 * this.zoomRate.y + 'px',
-                margin: 90 * this.zoomRate.y + 'px 0 0 ' + (35 + 115 * 2) * this.zoomRate.x + 'px'
-            }
-        },
-        three() {
-            return {
-                width: 110 * this.zoomRate.x + 'px',
-                height: 110 * this.zoomRate.y + 'px',
-                margin: 90 * this.zoomRate.y + 'px 0 0 ' + (35 + 115 * 3) * this.zoomRate.x + 'px'
-            }
-        },
-        four() {
-            return {
-                width: 110 * this.zoomRate.x + 'px',
-                height: 110 * this.zoomRate.y + 'px',
-                margin: 90 * this.zoomRate.y + 'px 0 0 ' + (35 + 115 * 4) * this.zoomRate.x + 'px'
-            }
-        },
-        five() {
-            return {
-                width: 110 * this.zoomRate.x + 'px',
-                height: 110 * this.zoomRate.y + 'px',
-                margin: (90 + 110) * this.zoomRate.y + 'px 0 0 ' + (35 + 115 * 0) * this.zoomRate.x + 'px'
-            }
-        },
-        six() {
-            return {
-                width: 110 * this.zoomRate.x + 'px',
-                height: 110 * this.zoomRate.y + 'px',
-                margin: (90 + 110) * this.zoomRate.y + 'px 0 0 ' + (35 + 115 * 1) * this.zoomRate.x + 'px'
-            }
-        },
-        seven() {
-            return {
-                width: 110 * this.zoomRate.x + 'px',
-                height: 110 * this.zoomRate.y + 'px',
-                margin: (90 + 110) * this.zoomRate.y + 'px 0 0 ' + (35 + 115 * 2) * this.zoomRate.x + 'px'
-            }
-        },
-        eight() {
-            return {
-                width: 110 * this.zoomRate.x + 'px',
-                height: 110 * this.zoomRate.y + 'px',
-                margin: (90 + 110) * this.zoomRate.y + 'px 0 0 ' + (35 + 115 * 3) * this.zoomRate.x + 'px'
-            }
-        },
-        nine() {
-            return {
-                width: 110 * this.zoomRate.x + 'px',
-                height: 110 * this.zoomRate.y + 'px',
-                margin: (90 + 110) * this.zoomRate.y + 'px 0 0 ' + (35 + 115 * 4) * this.zoomRate.x + 'px'
-            }
-        },
-        big() {
-            return {
-                width: 110 * this.zoomRate.x + 'px',
-                height: 110 * this.zoomRate.y + 'px',
-                margin: 330 * this.zoomRate.y + 'px 0 0 ' + 40 * this.zoomRate.x + 'px'
-            }
-        },
-        small() {
-            return {
-                width: 110 * this.zoomRate.x + 'px',
-                height: 110 * this.zoomRate.y + 'px',
-                margin: 330 * this.zoomRate.y + 'px 0 0 ' + 190 * this.zoomRate.x + 'px'
-            }
-        },
-        formula() {
-            return {
-                width: 210 * this.zoomRate.x + 'px',
-                textAlign: 'center',
-                // height: 110 * this.zoomRate.y + 'px',
-                fontSize: 42 * this.zoomRate.x + 'px',
-                margin: 37 * this.zoomRate.y + 'px 0 0 ' + 220 * this.zoomRate.x + 'px'
-            }
-        },
-        // TODO 遍历上期下注记录，计算筛选是否有中奖号码
-        bonudnum() {
-            return {
-                width: 68 * this.zoomRate.x + 'px',
-                textAlign: 'center',
-                fontSize: 40 * this.zoomRate.x + 'px',
-                height: 68 * this.zoomRate.y + 'px',
-                margin: 90 * this.zoomRate.y + 'px 0 0 ' + 290 * this.zoomRate.x + 'px',
-                backgroundImage: this.isBouns ? 'url(' + require('../assets/切图/主界面/显示-绿.png') + ')' : 'url(' + require('../assets/切图/主界面/显示-红.png') + ')'
-            }
-        }
-    },
-    methods: {
-        betsum(index){//单个下注总金额 ，比如下了多少金币在数字0上
-            let result=0
-            this.bets.forEach(value=>{
-                if(value.betnum === index){
-                    result+=value.betmoney
+                this.lastbets ? this.lastbets.forEach((key, value) => {
+                    if (this.userBet.idnum === value.idnum + 1 && checkBouns(value.betnum, sum)) { //只显示上次开奖结果
+                        _this.showBetNum = value.betnum
+                    }
+                }) : ''
+                return this.showBetNum || this.showBetNum === 0 ? this.showBetNum : ''
+            },
+            single() {
+                return {
+                    width: 110 * this.zoomRate.x + 'px',
+                    height: 110 * this.zoomRate.y + 'px',
+                    margin: 330 * this.zoomRate.y + 'px 0 0 ' + 340 * this.zoomRate.x + 'px'
                 }
-            })
-            return result
-        },
-        bet(event) {
-            console.log('Height' + event.target.offsetHeight)
-            console.log('Width' + event.target.offsetWidth)
-            console.log(event)
-        },
-        // 用户下注
-        dobet(num) {
-            if (this.userinfo.money - this.userBet.betmoney - this.lockmoney < 0) return //余额小于0是禁止下注
-            if (this.countDown < 30) return // 倒计时小于30秒时禁止下注
-            if (Object.prototype.toString.call(num) === '[object Number]') {
-                this.userBet.type = 'NUMBER'
-                this.userBet.betnum = num
-            } else if (Object.prototype.toString.call(num) === '[object String]') {
-                switch (num) {
-                    case 'single':
-                        this.userBet.type = 'SINGLE_OR_DOUBLE'
-                        this.userBet.betnum = num
-                        break
-                    case 'double':
-                        this.userBet.type = 'SINGLE_OR_DOUBLE'
-                        this.userBet.betnum = num
-                        break
-                    case 'big':
-                        this.userBet.type = 'BIG_OR_SMALL'
-                        this.userBet.betnum = num
-                        break
-                    case 'small':
-                        this.userBet.type = 'BIG_OR_SMALL'
-                        this.userBet.betnum = num
-                        break
-                    default:
-                        break
+            },
+            double() {
+                return {
+                    width: 110 * this.zoomRate.x + 'px',
+                    height: 110 * this.zoomRate.y + 'px',
+                    margin: 330 * this.zoomRate.y + 'px 0 0 ' + 490 * this.zoomRate.x + 'px'
+                }
+            },
+            zero() {
+                return {
+                    width: 110 * this.zoomRate.x + 'px',
+                    height: 110 * this.zoomRate.y + 'px',
+                    margin: 90 * this.zoomRate.y + 'px 0 0 ' + (35 + 115 * 0) * this.zoomRate.x + 'px'
+                }
+            },
+            one() {
+                return {
+                    width: 110 * this.zoomRate.x + 'px',
+                    height: 110 * this.zoomRate.y + 'px',
+                    margin: 90 * this.zoomRate.y + 'px 0 0 ' + (35 + 115 * 1) * this.zoomRate.x + 'px'
+                }
+            },
+            two() {
+                return {
+                    width: 110 * this.zoomRate.x + 'px',
+                    height: 110 * this.zoomRate.y + 'px',
+                    margin: 90 * this.zoomRate.y + 'px 0 0 ' + (35 + 115 * 2) * this.zoomRate.x + 'px'
+                }
+            },
+            three() {
+                return {
+                    width: 110 * this.zoomRate.x + 'px',
+                    height: 110 * this.zoomRate.y + 'px',
+                    margin: 90 * this.zoomRate.y + 'px 0 0 ' + (35 + 115 * 3) * this.zoomRate.x + 'px'
+                }
+            },
+            four() {
+                return {
+                    width: 110 * this.zoomRate.x + 'px',
+                    height: 110 * this.zoomRate.y + 'px',
+                    margin: 90 * this.zoomRate.y + 'px 0 0 ' + (35 + 115 * 4) * this.zoomRate.x + 'px'
+                }
+            },
+            five() {
+                return {
+                    width: 110 * this.zoomRate.x + 'px',
+                    height: 110 * this.zoomRate.y + 'px',
+                    margin: (90 + 110) * this.zoomRate.y + 'px 0 0 ' + (35 + 115 * 0) * this.zoomRate.x + 'px'
+                }
+            },
+            six() {
+                return {
+                    width: 110 * this.zoomRate.x + 'px',
+                    height: 110 * this.zoomRate.y + 'px',
+                    margin: (90 + 110) * this.zoomRate.y + 'px 0 0 ' + (35 + 115 * 1) * this.zoomRate.x + 'px'
+                }
+            },
+            seven() {
+                return {
+                    width: 110 * this.zoomRate.x + 'px',
+                    height: 110 * this.zoomRate.y + 'px',
+                    margin: (90 + 110) * this.zoomRate.y + 'px 0 0 ' + (35 + 115 * 2) * this.zoomRate.x + 'px'
+                }
+            },
+            eight() {
+                return {
+                    width: 110 * this.zoomRate.x + 'px',
+                    height: 110 * this.zoomRate.y + 'px',
+                    margin: (90 + 110) * this.zoomRate.y + 'px 0 0 ' + (35 + 115 * 3) * this.zoomRate.x + 'px'
+                }
+            },
+            nine() {
+                return {
+                    width: 110 * this.zoomRate.x + 'px',
+                    height: 110 * this.zoomRate.y + 'px',
+                    margin: (90 + 110) * this.zoomRate.y + 'px 0 0 ' + (35 + 115 * 4) * this.zoomRate.x + 'px'
+                }
+            },
+            big() {
+                return {
+                    width: 110 * this.zoomRate.x + 'px',
+                    height: 110 * this.zoomRate.y + 'px',
+                    margin: 330 * this.zoomRate.y + 'px 0 0 ' + 40 * this.zoomRate.x + 'px'
+                }
+            },
+            small() {
+                return {
+                    width: 110 * this.zoomRate.x + 'px',
+                    height: 110 * this.zoomRate.y + 'px',
+                    margin: 330 * this.zoomRate.y + 'px 0 0 ' + 190 * this.zoomRate.x + 'px'
+                }
+            },
+            formula() {
+                return {
+                    width: 210 * this.zoomRate.x + 'px',
+                    textAlign: 'center',
+                    // height: 110 * this.zoomRate.y + 'px',
+                    fontSize: 42 * this.zoomRate.x + 'px',
+                    margin: 37 * this.zoomRate.y + 'px 0 0 ' + 220 * this.zoomRate.x + 'px'
+                }
+            },
+            // TODO 遍历上期下注记录，计算筛选是否有中奖号码
+            bonudnum() {
+                return {
+                    width: 68 * this.zoomRate.x + 'px',
+                    textAlign: 'center',
+                    fontSize: 40 * this.zoomRate.x + 'px',
+                    height: 68 * this.zoomRate.y + 'px',
+                    margin: 90 * this.zoomRate.y + 'px 0 0 ' + 290 * this.zoomRate.x + 'px',
+                    backgroundImage: this.isBouns ? 'url(' + require('../assets/切图/主界面/显示-绿.png') + ')' : 'url(' + require('../assets/切图/主界面/显示-红.png') + ')'
                 }
             }
-            this.userBet.betimg = this.chipImg
-            this.bets.push(Object.assign({}, this.userBet))
-        }
-    },
-    events: {
-        cancelBet(event) {
-            this.bets = []
+        },
+        methods: {
+            betsum(index) { //单个下注总金额 ，比如下了多少金币在数字0上
+                let result = 0
+                this.bets.forEach(value => {
+                    if (value.betnum === index) {
+                        result += value.betmoney
+                    }
+                })
+                return result
+            },
+            bet(event) {
+                console.log('Height' + event.target.offsetHeight)
+                console.log('Width' + event.target.offsetWidth)
+                console.log(event)
+            },
+            // 用户下注
+            dobet(num) {
+                if (this.userinfo.money - this.userBet.betmoney - this.lockmoney < 0) return //余额小于0是禁止下注
+                if (this.countDown < 30) return // 倒计时小于30秒时禁止下注
+                if (Object.prototype.toString.call(num) === '[object Number]') {
+                    this.userBet.type = 'NUMBER'
+                    this.userBet.betnum = num
+                } else if (Object.prototype.toString.call(num) === '[object String]') {
+                    switch (num) {
+                        case 'single':
+                            this.userBet.type = 'SINGLE_OR_DOUBLE'
+                            this.userBet.betnum = num
+                            break
+                        case 'double':
+                            this.userBet.type = 'SINGLE_OR_DOUBLE'
+                            this.userBet.betnum = num
+                            break
+                        case 'big':
+                            this.userBet.type = 'BIG_OR_SMALL'
+                            this.userBet.betnum = num
+                            break
+                        case 'small':
+                            this.userBet.type = 'BIG_OR_SMALL'
+                            this.userBet.betnum = num
+                            break
+                        default:
+                            break
+                    }
+                }
+                this.userBet.betimg = this.chipImg
+                this.bets.push(Object.assign({}, this.userBet))
+            }
+        },
+        events: {
+            cancelBet(event) {
+                this.bets = []
+            }
         }
     }
-}
 </script>
 <style>
+    p {
+        -moz-user-select: none;
+        -webkit-user-select: none;
+    }
+    
     .playpanel {
         background: url('../assets/修改切图/主操作背景.png');
         background-size: cover;
@@ -281,8 +286,8 @@ export default {
     }
     
     img.chip {
-        width: 50%;
-        height: 50%;
+        width: 40%;
+        height: 40%;
         position: absolute;
     }
     

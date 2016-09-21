@@ -2,7 +2,7 @@
     //- 状态区 ，展示用户的一些状态
     div.state
         div.state-item.money.table(@touchend="showMessage")
-            div.my-money 我的金豆
+            div.my-money 我的金币
                 span 
                     img.moneyplus(v-bind:src="moneyplus")
             div.my-money.my-money-show(v-html="userinfo.money-lockmoney")
@@ -35,94 +35,94 @@
         //-         div.button.undo(@click="cancelbet")
 </template>
 <script>
-export default {
-    props: ['zoomRate', 'userBet', 'userinfo', 'countDown', 'lockmoney','chipImg'],
-    ready() {
-        console.log(this.zoomRate)
-        console.log(this.$els.image)
-    },
-    data() {
-        return {
-            headzoom: 1.2,
-            headborderimg: require('../assets/切图/主界面/头像1.png'),
-            anonymousheadimg: require('../assets/unkown.jpg'),
-            moneyplus:require('./../assets/修改切图/我的金豆加号.png')
-        }
-    },
-    // watch: {
-    //     'userinfo.headimgurl': function(newval) { //没有头像时 使用匿名头像
-    //         if (!newval) {
-    //             newval = this.anonymousheadimg
-    //         }
-    //         this.$els.image.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', newval)
-    //     }
-    // },
-    computed: {
-        headsize() {
+    export default {
+        props: ['zoomRate', 'userBet', 'userinfo', 'countDown', 'lockmoney', 'chipImg'],
+        ready() {
+            console.log(this.zoomRate)
+            console.log(this.$els.image)
+        },
+        data() {
             return {
-                width: 142 * this.headzoom * this.zoomRate.x,
-                height: 165 * this.headzoom * this.zoomRate.y
+                headzoom: 1.2,
+                headborderimg: require('../assets/切图/主界面/头像1.png'),
+                anonymousheadimg: require('../assets/unkown.jpg'),
+                moneyplus: require('./../assets/修改切图/我的金豆加号.png')
             }
         },
-        headborder() {
-            return 70 * this.headzoom * this.zoomRate.x + ',' + 15 * this.headzoom * this.zoomRate.y + ' ' + 128 * this.headzoom * this.zoomRate.x + ',' + 48 * this.headzoom * this.zoomRate.y + ' ' + 128 * this.headzoom * this.zoomRate.x + ',' + 113 * this.headzoom * this.zoomRate.y + ' ' + 71 * this.headzoom * this.zoomRate.x + ',' + 146 * this.headzoom * this.zoomRate.y + ' ' + 13 * this.headzoom * this.zoomRate.x + ',' + 113 * this.headzoom * this.zoomRate.y + ' ' + 13 * this.headzoom * this.zoomRate.x + ',' + 48 * this.headzoom * this.zoomRate.y
-        },
-        headstyle() {
-            return {
-                // width: 640 / 3 * this.zoomRate.x + 'px',
-                // height: 640 / 3 * this.zoomRate.y + 'px',
-                padding: '0px ' + (640 / 3 * this.zoomRate.x - this.headsize.width) / 2 + 'px' //
-                    // transform: 'scale(' + this.headsize.width / (640 / 3 * this.zoomRate.x) + ')'
-                    // transform: 'scale(' + this.headsize.width / (640 / 3 * this.zoomRate.x) + ',' + this.headsize.height / (1008 * 0.17) + ')'
-            }
-        }
-    },
-    methods: {
-        changecounter(event){
-            this.userBet.betmoney = event
-            switch(event){
-                case 100:
-                    this.chipImg = require('./../assets/切图/主界面/铁-筹码.png')
-                    break;
-                case 1000:
-                    this.chipImg = require('./../assets/切图/主界面/铜-筹码.png')
-                    break;
-                case 10000:
-                    this.chipImg = require('./../assets/切图/主界面/银-筹码.png')
-                    break;
-                case 100000:
-                    this.chipImg = require('./../assets/切图/主界面/金-筹码.png')
-                    break;
-                default:
-                    this.chipImg = require('./../assets/切图/主界面/银-筹码.png')
-                    break;
+        // watch: {
+        //     'userinfo.headimgurl': function(newval) { //没有头像时 使用匿名头像
+        //         if (!newval) {
+        //             newval = this.anonymousheadimg
+        //         }
+        //         this.$els.image.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', newval)
+        //     }
+        // },
+        computed: {
+            headsize() {
+                return {
+                    width: 142 * this.headzoom * this.zoomRate.x,
+                    height: 165 * this.headzoom * this.zoomRate.y
+                }
+            },
+            headborder() {
+                return 70 * this.headzoom * this.zoomRate.x + ',' + 15 * this.headzoom * this.zoomRate.y + ' ' + 128 * this.headzoom * this.zoomRate.x + ',' + 48 * this.headzoom * this.zoomRate.y + ' ' + 128 * this.headzoom * this.zoomRate.x + ',' + 113 * this.headzoom * this.zoomRate.y + ' ' + 71 * this.headzoom * this.zoomRate.x + ',' + 146 * this.headzoom * this.zoomRate.y + ' ' + 13 * this.headzoom * this.zoomRate.x + ',' + 113 * this.headzoom * this.zoomRate.y + ' ' + 13 * this.headzoom * this.zoomRate.x + ',' + 48 * this.headzoom * this.zoomRate.y
+            },
+            headstyle() {
+                return {
+                    // width: 640 / 3 * this.zoomRate.x + 'px',
+                    // height: 640 / 3 * this.zoomRate.y + 'px',
+                    padding: '0px ' + (640 / 3 * this.zoomRate.x - this.headsize.width) / 2 + 'px' //
+                        // transform: 'scale(' + this.headsize.width / (640 / 3 * this.zoomRate.x) + ')'
+                        // transform: 'scale(' + this.headsize.width / (640 / 3 * this.zoomRate.x) + ',' + this.headsize.height / (1008 * 0.17) + ')'
+                }
             }
         },
-        showMessage() {
-            this.$dispatch('showMessage', 4) // 5代表背景数组的最后一个，即显示充值的背景
-        },
-        cancelbet() {
-            if (this.countDown > 30) { // 倒计时超过30秒是才能取消下注
-                this.$dispatch('cancelbet')
+        methods: {
+            changecounter(event) {
+                this.userBet.betmoney = event
+                switch (event) {
+                    case 100:
+                        this.chipImg = require('./../assets/切图/主界面/铁-筹码.png')
+                        break;
+                    case 1000:
+                        this.chipImg = require('./../assets/切图/主界面/铜-筹码.png')
+                        break;
+                    case 10000:
+                        this.chipImg = require('./../assets/切图/主界面/银-筹码.png')
+                        break;
+                    case 100000:
+                        this.chipImg = require('./../assets/切图/主界面/金-筹码.png')
+                        break;
+                    default:
+                        this.chipImg = require('./../assets/切图/主界面/银-筹码.png')
+                        break;
+                }
+            },
+            showMessage() {
+                this.$dispatch('showMessage', 4) // 5代表背景数组的最后一个，即显示充值的背景
+            },
+            cancelbet() {
+                if (this.countDown > 30) { // 倒计时超过30秒是才能取消下注
+                    this.$dispatch('cancelbet')
+                }
+            },
+            checkData(event) {
+                // console.log(/\d+/.test(event.target.innerHTML))
+                event.target.innerHTML = event.target.innerHTML.replace(/\D+/g, '')
+                if (!event.target.innerHTML) {
+                    event.target.innerHTML = 1 //最小值为 1
+                }
+                this.userBet.betmoney = parseInt(event.target.innerHTML)
+            },
+            changeData(event) {
+                event.target.innerHTML = event.target.innerHTML.replace(/\D+/g, '')
+                if (!event.target.innerHTML) {
+                    event.target.innerHTML = 1 //最小值为 1
+                }
+                this.userBet.betmoney = parseInt(event.target.innerHTML)
             }
-        },
-        checkData(event) {
-            // console.log(/\d+/.test(event.target.innerHTML))
-            event.target.innerHTML = event.target.innerHTML.replace(/\D+/g, '')
-            if (!event.target.innerHTML) {
-                event.target.innerHTML = 1 //最小值为 1
-            }
-            this.userBet.betmoney = parseInt(event.target.innerHTML)
-        },
-        changeData(event) {
-            event.target.innerHTML = event.target.innerHTML.replace(/\D+/g, '')
-            if (!event.target.innerHTML) {
-                event.target.innerHTML = 1 //最小值为 1
-            }
-            this.userBet.betmoney = parseInt(event.target.innerHTML)
         }
     }
-}
 </script>
 <style>
     .state {

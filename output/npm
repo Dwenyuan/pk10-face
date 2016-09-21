@@ -2,9 +2,9 @@
 > pk10@1.0.0 build /Users/liushao/Documents/workface/1
 > webpack
 
-Hash: 449bd1e6ef17191e589d
+Hash: 6e3c3835fc80a1cbe75f
 Version: webpack 1.13.2
-Time: 17230ms
+Time: 17008ms
                                Asset     Size  Chunks             Chunk Names
 a1d24965dc1961e408cd933eaec61bda.png  3.68 kB          [emitted]  
 7055474922115f39ece85693ab42650c.png   438 kB          [emitted]  
@@ -53,7 +53,7 @@ d2f7ece96f44a64f02a3618ec594d0e6.png  3.63 kB          [emitted]
 60d41e004e6533b05269887467d8214c.png  3.43 kB          [emitted]  
 2d6f93c1ff61f70a08a56a753fb5fc77.png  5.12 kB          [emitted]  
 96ba20abec66de90d7077f6c409b6b73.png  3.07 kB          [emitted]  
-                              app.js   326 kB       0  [emitted]  app
+                              app.js   327 kB       0  [emitted]  app
                             login.js   240 kB       1  [emitted]  login
                           manager.js   296 kB       2  [emitted]  manager
     + 249 hidden modules

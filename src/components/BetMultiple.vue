@@ -12,36 +12,36 @@
                 a.button 10X
 </template>
 <script>
-export default {
-    data() {
-        return {}
+    export default {
+        data() {
+            return {}
+        }
     }
-}
 </script>
 <style>
-.multiple {
-    background: rgba(255, 0, 0, 0.6);
-    height: 12%;
-}
-
-div.bet-button-area {
-    display: table;
-    float: left;
-    width: 33%;
-    height: 100%;
-}
-
-div.ten {
-    width: 34%;
-}
-
-a.button {
-    /*width: 100%;*/
-    /*height: 50%;*/
-    font-size: 2em;
-    /*background: #CCC;*/
-    background-image: -webkit-linear-gradient(315deg, #feae3d, #ef8b11);
-    padding: .1em 1em;
-    border-radius: 1em;
-}
+    .multiple {
+        background: rgba(255, 0, 0, 0.6);
+        height: 12%;
+    }
+    
+    div.bet-button-area {
+        display: table;
+        float: left;
+        width: 33%;
+        height: 100%;
+    }
+    
+    div.ten {
+        width: 34%;
+    }
+    
+    a.button {
+        /*width: 100%;*/
+        /*height: 50%;*/
+        font-size: 2em;
+        /*background: #CCC;*/
+        background-image: -webkit-linear-gradient(315deg, #feae3d, #ef8b11);
+        padding: .1em 1em;
+        border-radius: 1em;
+    }
 </style>

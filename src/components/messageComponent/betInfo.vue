@@ -12,27 +12,27 @@
                 span(v-html="item.betnum|covert")
 </template>
 <script>
-import RequestList from '../../js/request-list'
-export default {
-    props: ['zoomRate'],
-    ready() {
-        RequestList.getRecentlyBets().then(res => this.betRecord = res.data)
-    },
-    data() {
-        return {
-            betRecord: require('../../data/betRecord')
-        }
-    },
-    computed: {
-        content() {
+    import RequestList from '../../js/request-list'
+    export default {
+        props: ['zoomRate'],
+        ready() {
+            RequestList.getRecentlyBets().then(res => this.betRecord = res.data)
+        },
+        data() {
             return {
-                width: 458 * this.zoomRate.x + 'px',
-                height: 580 * this.zoomRate.y + 'px',
-                margin: 90 * this.zoomRate.y + 'px 0 0 ' + 37 * this.zoomRate.x + 'px'
+                betRecord: require('../../data/betRecord')
+            }
+        },
+        computed: {
+            content() {
+                return {
+                    width: 458 * this.zoomRate.x + 'px',
+                    height: 580 * this.zoomRate.y + 'px',
+                    margin: 90 * this.zoomRate.y + 'px 0 0 ' + 37 * this.zoomRate.x + 'px'
+                }
             }
         }
     }
-}
 </script>
 <style>
     div.bet-info {

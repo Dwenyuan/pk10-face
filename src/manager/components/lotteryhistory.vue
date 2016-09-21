@@ -34,7 +34,7 @@
     export default {
         props: [],
         ready() {
-            RequestList.getAllBonusNums(1000).then(res => this.lotteryhistoryList = res.data)
+            RequestList.getAllBonusNums(20).then(res => this.lotteryhistoryList = res.data)
         },
         data() {
             return {

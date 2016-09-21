@@ -16,8 +16,8 @@
                     img.prize-button(v-bind:src="prizeButton")
 </template>
 <script>
-export default {
-    ready() {
+    export default {
+        ready() {
 
         },
         props: ['zoomRate'],
@@ -84,48 +84,48 @@ export default {
         methods: {
 
         }
-}
+    }
 </script>
 <style>
-div.exchange {
-    position: absolute;
-}
-
-img.exchange {
-    z-index: 3;
-}
-
-div.barcontent {
-    width: 100%;
-    height: 100%;
-}
-
-img.money-img {
-    position: absolute;
-}
-
-div.barcontent div {
-    float: left;
-}
-
-div.bonus-money {
-    position: absolute;
-    color: white;
-}
-
-.background-img {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-}
-
-div.background-img {
-    padding: 1%;
-}
-
-div.change-button div {
-    float: left;
-    height: 100%;
-    width: 50%;
-}
+    div.exchange {
+        position: absolute;
+    }
+    
+    img.exchange {
+        z-index: 3;
+    }
+    
+    div.barcontent {
+        width: 100%;
+        height: 100%;
+    }
+    
+    img.money-img {
+        position: absolute;
+    }
+    
+    div.barcontent div {
+        float: left;
+    }
+    
+    div.bonus-money {
+        position: absolute;
+        color: white;
+    }
+    
+    .background-img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+    }
+    
+    div.background-img {
+        padding: 1%;
+    }
+    
+    div.change-button div {
+        float: left;
+        height: 100%;
+        width: 50%;
+    }
 </style>

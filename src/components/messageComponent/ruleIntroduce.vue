@@ -2,11 +2,9 @@
 	div.introduce(v-bind:style="content",v-html="rule")
 </template>
 <script>
-export default {
-    ready() {
-            console.log(this.rule)
-        },
+    export default {
         props: ['zoomRate'],
+        ready() {},
         data() {
             return {
                 rule: require('./../../data/ruleIntro.html')
@@ -21,12 +19,12 @@ export default {
                 }
             }
         }
-}
+    }
 </script>
 <style>
-div.introduce {
-    position: absolute;
-    overflow: auto;
-    padding: 10px;
-}
+    div.introduce {
+        position: absolute;
+        overflow: auto;
+        padding: 10px;
+    }
 </style>
