@@ -25,6 +25,8 @@ module.exports.getAllUserInfo = () => Vue.http.get('getUserInfoList');
 module.exports.getLastNotice = () => Vue.http.get('getLastNotice');
 
 module.exports.logout = () => Vue.http.get('logout');
+// 心跳测试
+module.exports.heart = (params) => Vue.http.get('checkToken?echostr=' + params);
 // 请求兑奖
 module.exports.cashPrize = (userinfo) => Vue.http.post('cashPrize', userinfo);
 // 获取微信用户code 用来后台获取用户openid

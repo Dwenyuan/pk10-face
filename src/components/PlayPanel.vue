@@ -234,7 +234,7 @@
             // 用户下注
             dobet(num) {
                 if (this.userinfo.money - this.userBet.betmoney - this.lockmoney < 0) return //余额小于0是禁止下注
-                if (this.countDown < 30) return // 倒计时小于30秒时禁止下注
+                if (this.countDown < 60) return // 倒计时小于60秒时禁止下注
                 if (Object.prototype.toString.call(num) === '[object Number]') {
                     this.userBet.type = 'NUMBER'
                     this.userBet.betnum = num

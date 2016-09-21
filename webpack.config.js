@@ -31,30 +31,30 @@ module.exports = {
             loader: 'eslint',
             exclude: /node_modules/
         }, {
-            test: /\.js$/,
-            loader: 'eslint',
-            exclude: /node_modules/
-        }],
+                test: /\.js$/,
+                loader: 'eslint',
+                exclude: /node_modules/
+            }],
         loaders: [{
             test: /\.vue$/,
             loader: 'vue'
         }, {
-            test: /\.js$/,
-            loader: 'babel',
-            exclude: /node_modules/,
-            query: {
-                presets: ['es2015']
-            }
-        }, {
-            test: /\.json$/,
-            loader: 'json'
-        }, {
-            test: /\.html$/,
-            loader: 'vue-html'
-        }, {
-            test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
-            loader: 'url?limit=3000'
-        }]
+                test: /\.js$/,
+                loader: 'babel',
+                exclude: /node_modules/,
+                query: {
+                    presets: ['es2015']
+                }
+            }, {
+                test: /\.json$/,
+                loader: 'json'
+            }, {
+                test: /\.html$/,
+                loader: 'vue-html'
+            }, {
+                test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+                loader: 'url?limit=3000'
+            }]
     },
     eslint: {
         formatter: require('eslint-friendly-formatter')
