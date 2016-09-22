@@ -23,7 +23,7 @@
     export default {
         props: [],
         ready() {
-            document.ontouchmove = e => e.preventDefault() //禁止用户移动网页
+            // document.body.ontouchmove = e => e.preventDefault() //禁止用户移动网页
             let that = this
             window.onresize = function() {
                 that.screenSize.width = window.innerWidth

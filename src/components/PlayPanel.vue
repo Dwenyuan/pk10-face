@@ -4,7 +4,7 @@
         div.table-panel(v-el:panel,v-bind:style="{width:imgSize.width*zoomRate.x+'px',height:imgSize.height*zoomRate.y+'px'}")
             div.num.single(v-bind:style="single",@touchend="dobet('single')")
                 img.chip(v-for="item in bets|filterBy 'single' in 'betnum'",v-bind:src="item.betimg",v-bind:style="{margin: (Math.random() * 50) + '% 0 0 ' + (Math.random() * 50) + '%'}")
-                p.bet-money-item(v-show="betsum('double')",v-html="betsum('single')")
+                p.bet-money-item(v-show="betsum('single')",v-html="betsum('single')")
             div.num.double(v-bind:style="double",@touchend="dobet('double')")
                 img.chip(v-for="item in bets|filterBy 'double' in 'betnum'",v-bind:src="item.betimg",v-bind:style="{margin: (Math.random() * 50) + '% 0 0 ' + (Math.random() * 50) + '%'}")
                 p.bet-money-item(v-show="betsum('double')",v-html="betsum('double')")
@@ -286,8 +286,8 @@
     }
     
     img.chip {
-        width: 40%;
-        height: 40%;
+        width: 30%;
+        height: 30%;
         position: absolute;
     }
     

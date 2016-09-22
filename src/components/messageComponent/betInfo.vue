@@ -1,26 +1,46 @@
 <template lang="pug">
-    div.bet-info(v-bind:style="content")
-        div.record(v-for="item in betRecord")
-            p.created-time(v-html="item.createdAt|datetime")
-            p.detail
-                span 玩法：
-                span(v-html="item.playlaw")
-                span 下注金额：
-                span(v-html="item.betmoney")
-            p.bonus-num
-                span 数字：
-                span(v-html="item.betnum|covert")
+        div.bet-info(v-bind:style="content")
+            div.record
+                div.split-record 期数
+                div.split-record 项目
+                div.split-record 金额
+                div.split-record 结果
+            div.record(v-for="item in betRecord")
+                div.split-record(v-html="item.idnum")
+                div.split-record(v-html="betnumshow(item)")
+                div.split-record(v-html="item.betmoney")
+                div.split-record(v-html="")
 </template>
 <script>
     import RequestList from '../../js/request-list'
     export default {
-        props: ['zoomRate'],
+        props: ['zoomRate', 'lotterynum'],
         ready() {
             RequestList.getRecentlyBets().then(res => this.betRecord = res.data)
         },
         data() {
             return {
                 betRecord: require('../../data/betRecord')
+            }
+        },
+        methods: {
+            betnumshow(bet) {
+                const numtext = '〇一二三四五六七八九大小单双';
+                if (bet.type === 'NUMBER') {
+                    return numtext[bet.betnum]
+                }
+                switch (bet.betnum) {
+                    case 'single':
+                        return numtext[12]
+                    case 'double':
+                        return numtext[13]
+                    case 'big':
+                        return numtext[10]
+                    case 'small':
+                        return numtext[11]
+                }
+            },
+            resultshow(item) {
             }
         },
         computed: {
@@ -37,7 +57,7 @@
 <style>
     div.bet-info {
         position: absolute;
-        overflow: auto;
+        overflow: scroll;
         padding: 10px;
     }
     
