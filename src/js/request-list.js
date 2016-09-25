@@ -16,6 +16,8 @@ module.exports.createUserBets = (params) => Vue.http.post('userbet/createUserBet
 // 获取最近下注
 module.exports.getRecentlyBets = (params) => Vue.http.get('userbet/getRecentlyBets', params);
 
+module.exports.getlastBets = (params) => Vue.http.get('userbet/getlastBets?idnum=' + params)
+
 module.exports.getuserCodeFromNet = (code) => Vue.http.get('getUserCode', { params: { code: code } });
 // 获取用户信息
 module.exports.getuserinfo = (userinfo) => Vue.http.post('getuserinfo', userinfo);

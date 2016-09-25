@@ -51,6 +51,11 @@
                     margin: 90 * this.zoomRate.y + 'px 0 0 ' + 37 * this.zoomRate.x + 'px'
                 }
             }
+        },
+        event:{
+            getRecentlyBets(){
+                RequestList.getRecentlyBets().then(res => this.betRecord = res.data)
+            }
         }
     }
 </script>

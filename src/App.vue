@@ -30,6 +30,29 @@
                 that.screenSize.height = window.innerHeight
             }
             this.init()
+            RequestList.getlastBets().then(res => {
+                res.data.map(value => {
+                    switch (value.betmoney) {
+                        case 100:
+                            value.betimg = require('./assets/切图/主界面/铁-筹码.png')
+                            break;
+                        case 1000:
+                            value.betimg = require('./assets/切图/主界面/铜-筹码.png')
+                            break;
+                        case 10000:
+                            value.betimg = require('./assets/切图/主界面/银-筹码.png')
+                            break;
+                        case 100000:
+                            value.betimg = require('./assets/切图/主界面/金-筹码.png')
+                            break;
+                        default:
+                            value.betimg = require('./assets/切图/主界面/银-筹码.png')
+                            break;
+                    }
+                })
+            })
+            this.bets = res.data
+                // 获取最近一期下注 并且未兑奖的记录 
                 // this.getUserInfoByNet()
                 // 初始化读取数据 在此版本中从session 中读取用户信息
             this.$emit('getUserInfo')
@@ -73,16 +96,21 @@
             init() {
                 // 读取开奖数据
                 RequestList.getBonusNum().then(res => this.lotterynum = res.data)
-                    // this.isinit ? this.getUserInfoByNet() : this.$emit('getUserInfo')
-                    // this.isinit = false
-                    // 获取公告数据
+                    // 读取开奖记录
+                this.$broadcast('getBonusRecord')
+                    // 获取最近下注记录
+                this.$broadcast('getRecentlyBets')
+
+                // this.isinit ? this.getUserInfoByNet() : this.$emit('getUserInfo')
+                // this.isinit = false
+                // 获取公告数据
                 this.$emit('getLastNotice')
             },
             show() {},
             heart() { // 心跳测试
                 RequestList.heart('checktoken').then(res => {
                     res.data === 'checktoken' ? console.log('connected') : this.$dispatch('showTip', '断开连接')
-                    setTimeout(() => this.heart(),10000)
+                    setTimeout(() => this.heart(), 10000)
                 }, res => this.$dispatch('showTip', '断开连接'))
             },
             initwx() {
@@ -169,6 +197,9 @@
             },
             reloadinfo(event) {
                 this.init()
+            },
+            getBonusRecord() {
+
             },
             // 触发错误，并打开遮罩层
             error() {

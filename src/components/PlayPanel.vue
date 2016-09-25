@@ -220,7 +220,7 @@
             betsum(index) { //单个下注总金额 ，比如下了多少金币在数字0上
                 let result = 0
                 this.bets.forEach(value => {
-                    if (value.betnum === index) {
+                    if (value.betnum == index) {
                         result += value.betmoney
                     }
                 })

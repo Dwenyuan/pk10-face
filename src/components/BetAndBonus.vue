@@ -83,9 +83,11 @@
                     if (typeof res.data.errmsg !== 'undefined') {
                         that.$dispatch('showTip', res.data.errmsg)
                     }
+                    // that.bets = []
                     console.log(res.data)
                 }, (res) => {
                     that.$dispatch('showTip', '投注失败')
+                    // that.bets = []
                     console.error(res.data)
                 })
             },
@@ -93,6 +95,35 @@
             cashPrize() {
                 var that = this
                 RequestList.cashPrize(JSON.stringify(this.userinfo)).then(res => res.data.errmsg ? this.$dispatch('showTip', '兑奖出错') : this.userinfo = res.data, res => console.error(res.data))
+            },
+            mergebets(bets) { //合并下注
+                var checkEqule = (key1, key2) => {
+                    if (key1.userid === key2.userid && key1.betnum === key2.betnum && key1.idnum === key2.idnum && key1.type === key2.type) {
+                        return true
+                    } else {
+                        return false
+                    }
+                }
+                var result = []
+                bets.forEach(value => {
+                    if (result.length === 0) {
+                        result.push(Object.assign({}, value))
+                    } else {
+                        var temp = null
+                        result.forEach(val => {
+                            if (checkEqule(val, value)) {
+                                temp = val
+                            }
+                        })
+                        if (temp) {
+                            temp.betmoney += value.betmoney
+                            temp = null
+                        } else {
+                            result.push(Object.assign({}, value))
+                        }
+                    }
+                })
+                return result
             },
             getBonusNum(id) { // 根据期数 获取开奖结果
                 var that = this
@@ -128,7 +159,7 @@
                         that.count()
                     } else {
                         // 倒计时小于0 时 获取获奖结果 并兑奖
-                        setTimeout(()=>that.getBonusNum(that.userBet.idnum),2500)
+                        setTimeout(() => that.getBonusNum(that.userBet.idnum), 2500)
                     }
                 }, 1000)
             }

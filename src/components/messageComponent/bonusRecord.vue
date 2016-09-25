@@ -53,6 +53,11 @@
                     margin: 90 * this.zoomRate.y + 'px 0 0 ' + 37 * this.zoomRate.x + 'px'
                 }
             }
+        },
+        events: {
+            getBonusRecord() {
+                RequestList.getBonusRecord(20).then(res => this.bonusRecord = res.data)
+            }
         }
     }
 </script>
