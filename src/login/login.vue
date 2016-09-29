@@ -22,7 +22,7 @@
                 img(@touchend="login",v-bind:src="loginButtonImg")
         div.button
             div.register-button
-                img(v-bind:src="registerButtonImg",@touchend="status = 'register'")
+        //-        img(v-bind:src="registerButtonImg",@touchend="status = 'register'")
         tip-modal
         div.split-11
         div.forget 忘记密码？

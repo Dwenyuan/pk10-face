@@ -3,13 +3,13 @@
         div.dialog(v-bind:style="dialog")
             div.close(v-bind:style="close",@touchend="dialogShow = false")
             div.content(v-bind:style="content")
-            div(v-bind:is="dialogImg[currentIndex].type",v-bind:zoom-rate="zoomRate",v-bind:userinfo="userinfo")
+            div(v-bind:is="dialogImg[currentIndex].type",v-bind:zoom-rate="zoomRate",v-bind:userinfo="userinfo",v-bind:bonus-record.sync="bonusRecord")
             img(v-bind:src="dialogImg[currentIndex].background")
 </template>
 <script>
     import RequestList from '../js/request-list'
     export default {
-        props: ['zoomRate', 'userinfo'],
+        props: ['zoomRate', 'userinfo','bonusRecord'],
         data() {
             return {
                 dialogShow: false,

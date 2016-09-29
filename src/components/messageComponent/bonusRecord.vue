@@ -26,13 +26,12 @@
 <script>
     import RequestList from '../../js/request-list'
     export default {
-        props: ['zoomRate'],
+        props: ['zoomRate','bonusRecord'],
         ready() {
             RequestList.getBonusRecord(20).then(res => this.bonusRecord = res.data)
         },
         data() {
             return {
-                bonusRecord: require('../../data/bounsRecord')
             }
         },
         methods: {

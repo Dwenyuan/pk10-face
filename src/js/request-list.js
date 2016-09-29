@@ -9,6 +9,7 @@ module.exports.getMainConfig = () => Vue.http.get('getMainConfig', { params: { u
 module.exports.getCount = () => Vue.http.get('getCount');
 // 获取开奖结果
 module.exports.getBonusNum = (params) => Vue.http.get('getBonusNum', params);
+module.exports.getBonusNums = (params) => Vue.http.post('getBonusNums', {nums:params});
 // 获取开奖记录
 module.exports.getAllBonusNums = (params) => Vue.http.get('getBonusRecord', params);
 // 买定离手

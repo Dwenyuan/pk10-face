@@ -5,7 +5,7 @@
         play-panel(v-bind:zoom-rate="zoomRate",v-bind:userinfo="userinfo",v-bind:user-bet="userBet",v-bind:bets.sync="bets",v-bind:lockmoney="lockmoney",v-bind:error.sync="error",v-bind:chip-img.sync="chipImg",v-bind:lotterynum.sync="lotterynum",v-bind:count-down.sync="countDown",v-bind:count-num.sync="countNum")
         state(v-bind:zoom-rate="zoomRate",v-bind:userinfo="userinfo",v-bind:user-bet="userBet",v-bind:bets.sync="bets",v-bind:lockmoney="lockmoney",v-bind:chip-img.sync="chipImg",v-bind:count-down.sync="countDown",v-bind:error.sync="error")
         //- bet-multiple
-        message(v-bind:zoom-rate="zoomRate",v-bind:userinfo="userinfo",v-bind:bets.sync="bets",v-bind:error.sync="error")
+        message(v-bind:zoom-rate="zoomRate",v-bind:userinfo="userinfo",v-bind:bets.sync="bets",v-bind:error.sync="error",v-bind:bonus-record.sync="bonusRecord")
         modal.modal(v-if="error")
         tip-modal
 </template>
@@ -75,6 +75,7 @@
                     createdAt: 0,
                     lotterynums: ''
                 },
+                bonusRecord:[],//开奖记录
                 // wx: wx,
                 countDown: 59, // 倒计时秒数
                 countNum: 300, //开奖时间间隔 默认3分钟
