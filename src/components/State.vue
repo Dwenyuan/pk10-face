@@ -72,8 +72,8 @@
                     // width: 640 / 3 * this.zoomRate.x + 'px',
                     // height: 640 / 3 * this.zoomRate.y + 'px',
                     padding: '0px ' + (640 / 3 * this.zoomRate.x - this.headsize.width) / 2 + 'px' //
-                        // transform: 'scale(' + this.headsize.width / (640 / 3 * this.zoomRate.x) + ')'
-                        // transform: 'scale(' + this.headsize.width / (640 / 3 * this.zoomRate.x) + ',' + this.headsize.height / (1008 * 0.17) + ')'
+                    // transform: 'scale(' + this.headsize.width / (640 / 3 * this.zoomRate.x) + ')'
+                    // transform: 'scale(' + this.headsize.width / (640 / 3 * this.zoomRate.x) + ',' + this.headsize.height / (1008 * 0.17) + ')'
                 }
             }
         },
@@ -120,6 +120,16 @@
                     event.target.innerHTML = 1 //最小值为 1
                 }
                 this.userBet.betmoney = parseInt(event.target.innerHTML)
+            }
+        },
+        watch:{
+            userinfo:{
+                handle(newval){
+                    if(newval&&newval.money<0){
+                        this.init()
+                    }
+                },
+                deep:true
             }
         }
     }

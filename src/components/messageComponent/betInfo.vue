@@ -1,15 +1,17 @@
 <template lang="pug">
         div.bet-info(v-bind:style="content")
             div.record
-                div.split-record 期数
-                div.split-record 项目
-                div.split-record 金额
-                div.split-record 结果
+                div.split-record-bet 期数
+                div.split-record-bet 项目
+                div.split-record-bet 金额
+                div.split-record-bet 余额
+                div.split-record-bet 结果
             div.record(v-for="item in betRecord")
-                div.split-record(v-html="item.idnum")
-                div.split-record(v-html="betnumshow(item)")
-                div.split-record(v-html="item.betmoney")
-                div.split-record(v-html="")
+                div.split-record-bet(v-html="item.idnum")
+                div.split-record-bet(v-html="betnumshow(item)")
+                div.split-record-bet(v-html="item.betmoney")
+                div.split-record-bet(v-html="item.balance")
+                div.split-record-bet(v-html="")
 </template>
 <script>
     import RequestList from '../../js/request-list'
@@ -68,5 +70,11 @@
     
     div.record {
         color: white;
+    }
+    
+    div.split-record-bet {
+        font-size: 13px;
+        width: 20%;
+        float: left;
     }
 </style>

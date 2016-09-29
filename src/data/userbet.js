@@ -3,7 +3,7 @@ define(function (openid) {
     return {
         id: '',
         type: '',
-        betmoney: 1000,
+        betmoney: -1,
         betimg: require('./../assets/切图/主界面/5X筹码-拷贝.png'),
         mulit: '',
         betnum: '',

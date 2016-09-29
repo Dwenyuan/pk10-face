@@ -24,6 +24,7 @@
         props: [],
         ready() {
             // document.body.ontouchmove = e => e.preventDefault() //禁止用户移动网页
+            RequestList.heart('checktoken').then(res=>res.data === 'checktoken' ? console.log('connected') : window.location.href='userlogin.html')
             let that = this
             window.onresize = function() {
                 that.screenSize.width = window.innerWidth
@@ -31,27 +32,27 @@
             }
             this.init()
             RequestList.getlastBets().then(res => {
-                res.data.map(value => {
-                    switch (value.betmoney) {
-                        case 100:
-                            value.betimg = require('./assets/切图/主界面/铁-筹码.png')
-                            break;
-                        case 1000:
-                            value.betimg = require('./assets/切图/主界面/铜-筹码.png')
-                            break;
-                        case 10000:
-                            value.betimg = require('./assets/切图/主界面/银-筹码.png')
-                            break;
-                        case 100000:
-                            value.betimg = require('./assets/切图/主界面/金-筹码.png')
-                            break;
-                        default:
-                            value.betimg = require('./assets/切图/主界面/银-筹码.png')
-                            break;
-                    }
+                    res.data.map(value => {
+                        switch (value.betmoney) {
+                            case 100:
+                                value.betimg = require('./assets/切图/主界面/铁-筹码.png')
+                                break;
+                            case 1000:
+                                value.betimg = require('./assets/切图/主界面/铜-筹码.png')
+                                break;
+                            case 10000:
+                                value.betimg = require('./assets/切图/主界面/银-筹码.png')
+                                break;
+                            case 100000:
+                                value.betimg = require('./assets/切图/主界面/金-筹码.png')
+                                break;
+                            default:
+                                value.betimg = require('./assets/切图/主界面/银-筹码.png')
+                                break;
+                        }
+                    })
+                    this.bets = res.data
                 })
-            })
-            this.bets = res.data
                 // 获取最近一期下注 并且未兑奖的记录 
                 // this.getUserInfoByNet()
                 // 初始化读取数据 在此版本中从session 中读取用户信息
@@ -64,7 +65,6 @@
                     userid: null,
                     betnum: null,
                     betmoney: 1000 //默认下注金额为1000
-
                 },
                 chipImg: require('./assets/切图/主界面/铜-筹码.png'),
                 lastbets: [], // 上次投注结果
@@ -100,7 +100,6 @@
                 this.$broadcast('getBonusRecord')
                     // 获取最近下注记录
                 this.$broadcast('getRecentlyBets')
-
                 // this.isinit ? this.getUserInfoByNet() : this.$emit('getUserInfo')
                 // this.isinit = false
                 // 获取公告数据
