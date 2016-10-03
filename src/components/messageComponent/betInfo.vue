@@ -88,7 +88,7 @@
     
     div.split-record-bet-1 {
         font-size: 13px;
-        width: 10%;
+        width: 12%;
         text-align: center;
         float: left;
     }
@@ -102,7 +102,7 @@
     
     div.split-record-bet-3 {
         font-size: 13px;
-        width: 30%;
+        width: 28%;
         text-align: center;
         float: left;
     }
