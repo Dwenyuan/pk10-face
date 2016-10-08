@@ -1,18 +1,6 @@
 <template lang="pug">
     //- 展示用户的下注金额 以及 奖金金额 当然还有倒计时
     div.bonus-bar
-       //- div.bonus-item.bet
-       //-     div.item-back.forzen
-       //-         div.item-show
-       //-             div.bet-num(v-bind:style="betNum",v-html="lockmoney")
-       //- div.bonus-item.count-down
-       //-     div.count-down-back
-       //-         div.count-down-show
-       //-             div.count-down-num(v-bind:style="{fontSize:40*zoomRate.x+'px'}",v-html="countDown | time")
-       //- div.bonus-item.bonus
-       //-     div.item-back.balance
-       //-         div.item-show(@touchend="showMessage")
-       //-             div.bet-num(v-bind:style="betNum" v-html="userinfo.money-lockmoney")
        div.left-split
        div.left(@touchend="showMessage")
             div.betnum 上期 
@@ -87,7 +75,7 @@
                     console.log(res.data)
                 }, (res) => {
                     that.$dispatch('showTip', '投注失败')
-                    // that.bets = []
+                        // that.bets = []
                     console.error(res.data)
                 })
             },
@@ -152,8 +140,8 @@
                     return
                 }
                 // console.log(this.countDown)
-                this.countDown--
-                    let that = this
+                this.countDown--;
+                let that = this
                 setTimeout(function() {
                     if (that.countDown > 0) {
                         that.count()

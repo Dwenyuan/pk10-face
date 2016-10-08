@@ -1,7 +1,6 @@
 <template lang="pug">
     //- 右上侧选项列表
     div.option-list(v-show="isOptionShow",transition="expand",v-bind:style="optionStyle")
-        //- img(v-bind:src="menuImg")
         div.pointer
         div.inner-pointer
         div.option-item(v-html="n",v-for="n in gameData.options",@touchend="showMessage($index)",v-bind:style="itemStyle")

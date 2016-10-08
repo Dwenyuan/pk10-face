@@ -16,23 +16,6 @@
             div.dobet-money-item-btn(@touchend="changecounter(100000)")
                 div.bet-text(v-show="this.userBet.betmoney===100000")
             div.dobet-money-item-btn(@touchend="cancelbet")
-        //-     div.money-state.table-cell
-        //-         div.button
-        //-             table
-        //-                 tr
-        //-                     td
-        //-                         span.money-num(contenteditable="true",@keyup="checkData",@blur="changeData",v-bind:style="{fontSize:34*zoomRate.x+'px'}",v-html="userBet.betmoney")
-        //- div.state-item.portrait
-        //-     div.polygon(@touchend="showMessage",v-bind:style="headstyle")
-        //-         svg(xmlns="http://www.w3.org/2000/svg",version="1.1",v-bind:width="headsize.width+'px'",v-bind:height="headsize.height+'px'")
-        //-             defs
-        //-                 pattern(id="image",x="0",y="0",patternUnits="userSpaceOnUse",v-bind:width="headsize.width",v-bind:height="headsize.height")
-        //-                     image(v-el:image,x="0",y="0",v-bind:width="headsize.width",v-bind:height="headsize.height")
-        //-             polygon(v-bind:points="headborder",fill="url(#image)")
-        //-             image(x="0",y="0",v-bind:width="headsize.width",v-bind:height="headsize.height",v-bind:xlink:href="headborderimg")
-        //- div.state-item.stars.table
-        //-     div.money-state.table-cell
-        //-         div.button.undo(@click="cancelbet")
 </template>
 <script>
     export default {
@@ -49,14 +32,6 @@
                 moneyplus: require('./../assets/修改切图/我的金豆加号.png')
             }
         },
-        // watch: {
-        //     'userinfo.headimgurl': function(newval) { //没有头像时 使用匿名头像
-        //         if (!newval) {
-        //             newval = this.anonymousheadimg
-        //         }
-        //         this.$els.image.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', newval)
-        //     }
-        // },
         computed: {
             headsize() {
                 return {
@@ -72,8 +47,8 @@
                     // width: 640 / 3 * this.zoomRate.x + 'px',
                     // height: 640 / 3 * this.zoomRate.y + 'px',
                     padding: '0px ' + (640 / 3 * this.zoomRate.x - this.headsize.width) / 2 + 'px' //
-                    // transform: 'scale(' + this.headsize.width / (640 / 3 * this.zoomRate.x) + ')'
-                    // transform: 'scale(' + this.headsize.width / (640 / 3 * this.zoomRate.x) + ',' + this.headsize.height / (1008 * 0.17) + ')'
+                        // transform: 'scale(' + this.headsize.width / (640 / 3 * this.zoomRate.x) + ')'
+                        // transform: 'scale(' + this.headsize.width / (640 / 3 * this.zoomRate.x) + ',' + this.headsize.height / (1008 * 0.17) + ')'
                 }
             }
         },
@@ -122,14 +97,14 @@
                 this.userBet.betmoney = parseInt(event.target.innerHTML)
             }
         },
-        watch:{
-            userinfo:{
-                handle(newval){
-                    if(newval&&newval.money<0){
+        watch: {
+            userinfo: {
+                handle(newval) {
+                    if (newval && newval.money < 0) {
                         this.init()
                     }
                 },
-                deep:true
+                deep: true
             }
         }
     }

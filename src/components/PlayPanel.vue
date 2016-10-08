@@ -44,11 +44,6 @@
             div.num.small(v-bind:style="small",@touchend="dobet('small')")
                 img.chip(v-for="item in bets|filterBy 'small' in 'betnum'",v-bind:src="item.betimg",v-bind:style="{margin: (Math.random() * 50) + '% 0 0 ' + (Math.random() * 50) + '%'}")
                 p.bet-money-item(v-show="betsum('small')",v-html="betsum('small')")
-            //- div.num.formula(v-bind:style="formula",v-html="bonusNum") 
-            //- div.num.bonudnum(v-bind:style="bonudnum")
-               //- table
-               //-      tr
-               //-          td(v-html="isBouns|covert")
         img(v-bind:src="tablePanelImg",style="margin:15% 0 0 5%;",v-bind:style="{width:imgSize.width*0.9*zoomRate.x+'px',height:imgSize.height*0.43*zoomRate.y+'px'}")
         img(v-bind:src="singleBigImg",style="margin:0% 0 0 5%;",v-bind:style="{width:imgSize.width*0.9*zoomRate.x+'px',height:imgSize.height*0.25*zoomRate.y+'px'}")
 </template>
