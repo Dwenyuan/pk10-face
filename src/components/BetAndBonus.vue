@@ -14,7 +14,7 @@
 <script>
     import RequestList from '../js/request-list'
     export default {
-        props: ['zoomRate', 'userinfo', 'userBet', 'lastbets', 'countDown', 'countNum', 'bets', 'lockmoney', 'lotterynum'],
+        props: ['zoomRate', 'userinfo', 'userBet', 'lastbets', 'countDown', 'countNum', 'bets', 'lockmoney', 'lotterynum','limitDown'],
         ready() {
             this.getCount(this.count(this.countDown))
         },
@@ -72,6 +72,7 @@
                         that.$dispatch('showTip', res.data.errmsg)
                     }
                     // that.bets = []
+                    this.$dispatch('getRecentlyBets')
                     console.log(res.data)
                 }, (res) => {
                     that.$dispatch('showTip', '投注失败')
@@ -131,7 +132,7 @@
             },
             count() {
                 // 距离开奖时间30秒时 买定离手
-                if (this.countDown === 59 && this.bets && this.bets.length > 0) {
+                if (this.countDown === this.limitDown && this.bets && this.bets.length > 0) {
                     this.createUserBets()
                 }
                 // 倒计时不是数字时不进行倒计时

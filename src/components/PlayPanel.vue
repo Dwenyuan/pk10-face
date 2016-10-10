@@ -49,7 +49,7 @@
 </template>
 <script>
     export default {
-        props: ['zoomRate', 'userinfo', 'lastbets', 'bets', 'userBet', 'countDown', 'countNum', 'lockmoney', 'lotterynum', 'chipImg'],
+        props: ['zoomRate', 'userinfo', 'lastbets', 'bets', 'userBet', 'countDown', 'countNum', 'lockmoney', 'lotterynum', 'chipImg','limitDown'],
         data() {
             return {
                 showBetNum: '', //中奖后在方块中显示此数字
@@ -229,7 +229,7 @@
             // 用户下注
             dobet(num) {
                 if (this.userinfo.money - this.userBet.betmoney - this.lockmoney < 0) return //余额小于0是禁止下注
-                if (this.countDown < 60) return // 倒计时小于60秒时禁止下注
+                if (this.countDown < this.limitDown) return // 倒计时小于60秒时禁止下注
                 if (Object.prototype.toString.call(num) === '[object Number]') {
                     this.userBet.type = 'NUMBER'
                     this.userBet.betnum = num

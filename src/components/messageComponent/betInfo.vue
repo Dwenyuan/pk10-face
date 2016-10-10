@@ -68,7 +68,7 @@
                 }
             }
         },
-        event:{
+        events:{
             getRecentlyBets(){
                 RequestList.getRecentlyBets().then(res => this.betRecord = res.data)
             }
@@ -94,7 +94,7 @@
     }
     
     div.split-record-bet-2 {
-        font-size: 13px;
+        font-size: 12px;
         width: 20%;
         text-align: center;
         float: left;

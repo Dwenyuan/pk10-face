@@ -19,7 +19,7 @@
 </template>
 <script>
     export default {
-        props: ['zoomRate', 'userBet', 'userinfo', 'countDown', 'lockmoney', 'chipImg'],
+        props: ['zoomRate', 'userBet', 'userinfo', 'countDown', 'lockmoney', 'chipImg','limitDown'],
         ready() {
             console.log(this.zoomRate)
             console.log(this.$els.image)
@@ -77,7 +77,7 @@
                 this.$dispatch('showMessage', 4) // 5代表背景数组的最后一个，即显示充值的背景
             },
             cancelbet() {
-                if (this.countDown > 30) { // 倒计时超过30秒是才能取消下注
+                if (this.countDown > this.limitDown) { // 倒计时超过30秒是才能取消下注
                     this.$dispatch('cancelbet')
                 }
             },
